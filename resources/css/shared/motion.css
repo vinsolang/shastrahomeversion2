@@ -1,0 +1,51 @@
+@layer components {
+    @media (prefers-reduced-motion: reduce) {
+        .project-row,
+        .project-gallery-control,
+        .project-gallery-thumb,
+        .project-filter-tab {
+            transition: none;
+        }
+
+        .project-row:hover,
+        .project-row--expanded,
+        .project-gallery-control:hover,
+        .project-gallery-thumb:hover,
+        .project-gallery-thumb--active {
+            transform: none;
+        }
+
+        .about-hero-media {
+            animation: none;
+        }
+
+        .project-gallery-control {
+            animation: none;
+        }
+
+        .project-concept-panel,
+        .project-row__preview img,
+        .project-card,
+        .project-row,
+        .project-row__meta {
+            transition: none;
+        }
+
+        .about-hero-card,
+        .about-core-card,
+        .about-core-icon,
+        .about-core-copy {
+            transition: none;
+        }
+
+        .about-hero-card:hover,
+        .about-core-card:hover {
+            transform: none;
+        }
+
+        .about-core-card:hover .about-core-icon,
+        .about-core-card:hover .about-core-copy {
+            transform: none;
+        }
+    }
+}

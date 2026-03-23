@@ -1,0 +1,105 @@
+@layer components {
+    .contact-stage__video {
+        transform: scale(1.02);
+        transform-origin: center;
+        will-change: transform;
+    }
+
+    .contact-stage__panel {
+        box-shadow: 0 28px 58px rgba(0, 0, 0, 0.18);
+        backdrop-filter: blur(2px);
+    }
+
+    .contact-field {
+        width: 100%;
+        min-height: 2.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background-color: rgba(7, 7, 7, 0.9);
+        padding: 0.72rem 0.9rem;
+        font-size: 0.82rem;
+        line-height: 1.1;
+        color: #ffffff;
+        transition:
+            border-color 180ms ease,
+            box-shadow 180ms ease,
+            background-color 180ms ease;
+    }
+
+    .contact-field::placeholder {
+        color: rgba(255, 255, 255, 0.48);
+    }
+
+    .contact-field:focus {
+        outline: none;
+        border-color: rgba(255, 136, 0, 0.92);
+        box-shadow: 0 0 0 1px rgba(255, 136, 0, 0.38);
+    }
+
+    .contact-field--invalid {
+        border-color: rgba(251, 113, 133, 0.92);
+        box-shadow: 0 0 0 1px rgba(251, 113, 133, 0.28);
+    }
+
+    .contact-select {
+        appearance: none;
+    }
+
+    .contact-select option {
+        background-color: #ffffff;
+        color: #111111;
+    }
+
+    .contact-select optgroup {
+        background-color: #ffffff;
+        color: #111111;
+    }
+
+    .contact-textarea {
+        min-height: 7rem;
+        resize: none;
+    }
+
+    .contact-submit {
+        display: inline-flex;
+        min-height: 2.85rem;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: #ff8800;
+        padding: 0.85rem 1.5rem;
+        font-size: 0.84rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        transition:
+            transform 180ms ease,
+            background-color 180ms ease;
+    }
+
+    .contact-submit:hover {
+        transform: translateY(-1px);
+        background-color: #ffa11f;
+    }
+
+    .contact-feedback {
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        padding: 0.85rem 1rem;
+        font-size: 0.84rem;
+        line-height: 1.5;
+    }
+
+    .contact-feedback--success {
+        background-color: rgba(16, 185, 129, 0.12);
+        color: #d1fae5;
+    }
+
+    .contact-feedback--error {
+        background-color: rgba(244, 63, 94, 0.12);
+        color: #ffe4e6;
+    }
+
+    .contact-field-error {
+        font-size: 0.78rem;
+        line-height: 1.35;
+        color: #fecdd3;
+    }
+}
