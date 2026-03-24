@@ -13,8 +13,8 @@ $navigation = [
 
 $contact = [
     'address_lines' => [
-        '123 Construction Ave,',
-        'Industrial Park, Bangalore, Lorem 560001',
+        'Phnom, Building 184, Samdach Chakrei Ponn St. (208),',
+        'Phnom Penh វិថី សម្តេចចក្រីប៉ុន (២០៨), រាជធានី​ភ្នំពេញ, Penh 12211',
     ],
     'phones' => [
         '+855 98 660 266',
@@ -23,10 +23,10 @@ $contact = [
     'hours' => 'Mon-Fri from 8am to 5pm',
     'email' => 'info@shastraconstruction.com',
     'socials' => [
-        ['label' => 'Facebook', 'icon' => 'facebook', 'href' => null],
-        ['label' => 'TikTok', 'icon' => 'tiktok', 'href' => null],
-        ['label' => 'Instagram', 'icon' => 'instagram', 'href' => null],
-        ['label' => 'Telegram', 'icon' => 'telegram', 'href' => null],
+        ['label' => 'Facebook', 'icon' => 'facebook', 'href' => 'https://www.facebook.com/Shastra/'],
+        ['label' => 'TikTok', 'icon' => 'tiktok', 'href' => 'https://www.tiktok.com/@shastrahome?is_from_webapp=1&sender_device=pc'],
+        // ['label' => 'Instagram', 'icon' => 'instagram', 'href' => null],
+        ['label' => 'Telegram', 'icon' => 'telegram', 'href' => 'https://t.me/Shastrahome'],
     ],
 ];
 

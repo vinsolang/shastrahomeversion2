@@ -168,22 +168,46 @@
                 <div class="mt-6 flex flex-wrap items-center gap-4">
                     @foreach ($contact['socials'] ?? [] as $social)
                         @php
+                            $socialHref = $social['href'] ?? null;
                             $socialIconPath = $socialIconImages[$social['icon']] ?? null;
                         @endphp
 
-                        <button type="button" class="{{ $drawerSocialButtonClasses }}" aria-label="{{ $social['label'] }}">
-                            @if ($socialIconPath)
-                                <img
-                                    src="{{ $versionedAsset($socialIconPath) }}"
-                                    alt=""
-                                    class="{{ $drawerSocialIconClasses }}"
-                                    width="44"
-                                    height="44"
-                                    loading="lazy"
-                                    decoding="async"
-                                >
-                            @endif
-                        </button>
+                        @if (filled($socialHref))
+                            <a
+                                href="{{ $socialHref }}"
+                                class="{{ $drawerSocialButtonClasses }}"
+                                aria-label="{{ $social['label'] }}"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                @click="open = false"
+                            >
+                                @if ($socialIconPath)
+                                    <img
+                                        src="{{ $versionedAsset($socialIconPath) }}"
+                                        alt=""
+                                        class="{{ $drawerSocialIconClasses }}"
+                                        width="44"
+                                        height="44"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                @endif
+                            </a>
+                        @else
+                            <span class="{{ $drawerSocialButtonClasses }}" role="img" aria-label="{{ $social['label'] }}">
+                                @if ($socialIconPath)
+                                    <img
+                                        src="{{ $versionedAsset($socialIconPath) }}"
+                                        alt=""
+                                        class="{{ $drawerSocialIconClasses }}"
+                                        width="44"
+                                        height="44"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                @endif
+                            </span>
+                        @endif
                     @endforeach
                 </div>
             </div>

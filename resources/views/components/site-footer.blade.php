@@ -102,7 +102,7 @@
 
     {{-- Logo strip --}}
     <section class="site-footer-logo-strip" aria-label="Future partner logos">
-        <div class="site-footer-shell">
+        <!-- <div class="site-footer-shell">
             <div class="site-footer-logo-grid" data-aos="fade-up" data-aos-duration="720">
                 @foreach ($logoPlaceholders as $item)
                     <div class="site-footer-logo-cell">
@@ -113,7 +113,7 @@
                     </div>
                 @endforeach
             </div>
-        </div>
+        </div> -->
     </section>
 
     {{-- Footer meta --}}
