@@ -1,5 +1,5 @@
-# *.log
-# .DS_Store
+*.log
+.DS_Store
 # .env
 # .env.backup
 # .env.production
@@ -15,24 +15,24 @@
 /node_modules
 /public/build
 /public/hot
-# /public/storage
-# /public/assets/videos/*.mp4
-# /public/assets/images/Projects/
-# /public/assets/images/Footer/
-# /public/assets/images/Services/Services-img.png
-# /public/assets/images/About us/About-hero-house.png
-# /public/assets/images/About us/Logo-BG 1.png
-# /public/assets/images/Background-under-nums.png
-# /public/assets/images/Backgrond-under-nums-1.png
-# /output
-# /storage/*.key
-# /storage/app/tmp_design/
-# /storage/app/tmp_pdf_review/
-# /storage/app/pdf_review/
-# /storage/app/private/source-videos/
-# /storage/app/screenshots/
-# /storage/logs/*.log
-# /storage/pail
+/public/storage
+/public/assets/videos/*.mp4
+/public/assets/images/Projects/
+/public/assets/images/Footer/
+/public/assets/images/Services/Services-img.png
+/public/assets/images/About us/About-hero-house.png
+/public/assets/images/About us/Logo-BG 1.png
+/public/assets/images/Background-under-nums.png
+/public/assets/images/Backgrond-under-nums-1.png
+/output
+/storage/*.key
+/storage/app/tmp_design/
+/storage/app/tmp_pdf_review/
+/storage/app/pdf_review/
+/storage/app/private/source-videos/
+/storage/app/screenshots/
+/storage/logs/*.log
+/storage/pail
 /vendor
 /docs
 about-*.png
