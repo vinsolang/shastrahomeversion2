@@ -13,9 +13,11 @@ $navigation = [
 
 $contact = [
     'address_lines' => [
-        'Phnom, Building 184, Samdach Chakrei Ponn St. (208),',
+        'The Desk Flagship - Daun Penh, Building 184, Samdach Chakrei Ponn St. (208),',
         'Phnom Penh វិថី សម្តេចចក្រីប៉ុន (២០៨), រាជធានី​ភ្នំពេញ, Penh 12211',
     ],
+    'map_url' => 'https://maps.app.goo.gl/uvQuafjcUG2HjxdD8',
+    'map_label' => 'Open in Google Maps',
     'phones' => [
         '+855 98 660 266',
         '+855 60 660 266',
@@ -30,25 +32,13 @@ $contact = [
     ],
 ];
 
-$footerLogoPlaceholders = array_map(
-    static fn (string $label): array => ['label' => $label],
-    [
-        'Studio partner',
-        'Project partner',
-        'Construction partner',
-        'Design partner',
-        'Supplier partner',
-        'Client partner',
-    ],
-);
-
 $pages = require __DIR__ . '/site/pages.php';
 
 return [
     // Brand
     'brand' => [
         'name' => 'Shastra Home',
-        'location' => '',
+        'location' => 'The Desk Flagship - Daun Penh, Phnom Penh',
     ],
 
     // Nav
@@ -76,13 +66,6 @@ return [
         ],
     ],
 
-    // Stats
-    'stats' => [
-        ['value' => '143+', 'label' => 'Projects Deliverable'],
-        ['value' => '28+', 'label' => 'Clients'],
-        ['value' => '31+', 'label' => 'Partners'],
-    ],
-
     // Contact
     'contact' => $contact,
 
@@ -105,9 +88,6 @@ return [
                 'Reach out for a consultation.',
             ],
         ],
-        'logo_strip' => [
-            'items' => $footerLogoPlaceholders,
-        ],
         'description_heading' => 'Shastra Home',
         'description' => [
             'Shastra Home offers professional design and construction services for a wide range of building projects, supported by years of experience and a dedicated team of skilled professionals.',
@@ -115,10 +95,10 @@ return [
         ],
         'company_links' => [
             ['label' => 'Home', 'route' => 'home'],
-            ['label' => 'Projects', 'route' => 'projects'],
             ['label' => 'Services', 'route' => 'services'],
-            ['label' => 'Templates', 'route' => 'templates'],
             ['label' => 'About Us', 'route' => 'about'],
+            ['label' => 'Projects', 'route' => 'projects'],
+            ['label' => 'Templates', 'route' => 'templates'],
             ['label' => 'Contact', 'route' => 'contact'],
         ],
         'contact' => $contact,

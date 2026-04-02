@@ -19,6 +19,7 @@
         "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
         "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-editorial: "Baskervville", Georgia, serif;
+    --font-khmer: "Kantumruy Pro", "Noto Sans Khmer", sans-serif;
 }
 
 @layer base {
@@ -34,12 +35,15 @@
         --navbar-accent: #ff8800;
         --footer-accent: #ff8800;
         --footer-dark: #1f1f1f;
-        --footer-placeholder: #d9d9d9;
     }
 
     /* Global document defaults */
     html {
         scroll-behavior: smooth;
+    }
+
+    :lang(km) {
+        font-family: var(--font-khmer);
     }
 
     a[href],

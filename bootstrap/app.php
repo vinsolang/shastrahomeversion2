@@ -18,15 +18,15 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->redirectGuestsTo(
-            static fn (Request $request): string => $request->routeIs('cms.*')
-                ? route('cms.login')
-                : route('cms.login'),
+            static fn (Request $request): string => $request->routeIs('*')
+                ? route('login')
+                : route('login'),
         );
 
         $middleware->redirectUsersTo(
-            static fn (Request $request): string => $request->routeIs('cms.*')
-                ? route('cms.dashboard')
-                : route('cms.dashboard'),
+            static fn (Request $request): string => $request->routeIs('*')
+                ? route('dashboard')
+                : route('dashboard'),
         );
     })
     ->withExceptions(function (Exceptions $exceptions): void {

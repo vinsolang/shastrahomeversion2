@@ -24,10 +24,20 @@
         $mediaVideos = collect([['src' => $media['video']]]);
     }
 
-    $mediaVideoSources = $mediaVideos
-        ->map(static fn (array $video): string => asset($video['src']))
-        ->values()
-        ->all();
+   $mediaVideoSources = $mediaVideos
+    ->map(function ($video) {
+
+        $src = $video['src'] ?? null;
+
+        if (!$src) return null;
+
+        return filter_var($src, FILTER_VALIDATE_URL)
+            ? $src
+            : asset($src);
+    })
+    ->filter()
+    ->values()
+    ->all();
     $hasMultipleMediaVideos = count($mediaVideoSources) > 1;
 @endphp
 
@@ -77,7 +87,8 @@
             <video
                 x-ref="mediaVideo"
                 class="absolute inset-0 h-full w-full object-cover"
-                :src="videos.length ? videos[activeVideo] : ''"
+                x-bind:src="videos.length ? videos[activeVideo] : ''"
+                x-bind:key="activeVideo"
                 autoplay
                 muted
                 loop

@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@yield('title', 'Shastra CMS')</title>
+<<<<<<< ours
+=======
+        <link rel="icon" type="image/png" href="{{ asset('assets/logo/Logo_not_text.png') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/logo/Logo_not_text.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('assets/logo/Logo_not_text.png') }}">
+>>>>>>> theirs
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -12,13 +18,13 @@
         <header class="border-b border-slate-200 bg-white">
             <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
                 <div>
-                    <a href="{{ route('cms.dashboard') }}" class="text-lg font-semibold tracking-tight text-slate-900">
+                    <a href="{{ route('dashboard') }}" class="text-lg font-semibold tracking-tight text-slate-900">
                         Shastra CMS
                     </a>
                     <p class="text-sm text-slate-500">Marketing content administration</p>
                 </div>
 
-                <form method="POST" action="{{ route('cms.logout') }}">
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
                     <button
@@ -36,34 +42,34 @@
             <aside class="rounded-3xl bg-slate-900 px-5 py-6 text-white shadow-sm">
                 <nav class="space-y-2" aria-label="CMS navigation">
                     <a
-                        href="{{ route('cms.dashboard') }}"
+                        href="{{ route('dashboard') }}"
                         @class([
                             'block rounded-2xl px-4 py-3 text-sm transition',
-                            'bg-white/12 text-white' => request()->routeIs('cms.dashboard'),
-                            'text-white/72 hover:bg-white/8 hover:text-white' => ! request()->routeIs('cms.dashboard'),
+                            'bg-white/12 text-white' => request()->routeIs('dashboard'),
+                            'text-white/72 hover:bg-white/8 hover:text-white' => ! request()->routeIs('dashboard'),
                         ])
                     >
                         Dashboard
                     </a>
 
                     <a
-                        href="{{ route('cms.settings.edit') }}"
+                        href="{{ route('settings.edit') }}"
                         @class([
                             'block rounded-2xl px-4 py-3 text-sm transition',
-                            'bg-white/12 text-white' => request()->routeIs('cms.settings.*'),
-                            'text-white/72 hover:bg-white/8 hover:text-white' => ! request()->routeIs('cms.settings.*'),
+                            'bg-white/12 text-white' => request()->routeIs('settings.*'),
+                            'text-white/72 hover:bg-white/8 hover:text-white' => ! request()->routeIs('settings.*'),
                         ])
                     >
                         Global Settings
                     </a>
 
-                    @foreach (config('cms.editable_pages', []) as $slug => $page)
+                    @foreach (config('editable_pages', []) as $slug => $page)
                         <a
-                            href="{{ route('cms.pages.edit', ['page' => $slug]) }}"
+                            href="{{ route('pages.edit', ['page' => $slug]) }}"
                             @class([
                                 'block rounded-2xl px-4 py-3 text-sm transition',
-                                'bg-white/12 text-white' => request()->routeIs('cms.pages.*') && request()->route('page') === $slug,
-                                'text-white/72 hover:bg-white/8 hover:text-white' => ! (request()->routeIs('cms.pages.*') && request()->route('page') === $slug),
+                                'bg-white/12 text-white' => request()->routeIs('pages.*') && request()->route('page') === $slug,
+                                'text-white/72 hover:bg-white/8 hover:text-white' => ! (request()->routeIs('pages.*') && request()->route('page') === $slug),
                             ])
                         >
                             {{ $page['label'] }}
@@ -71,11 +77,11 @@
                     @endforeach
 
                     <a
-                        href="{{ route('cms.contact-submissions.index') }}"
+                        href="{{ route('contact-submissions.index') }}"
                         @class([
                             'block rounded-2xl px-4 py-3 text-sm transition',
-                            'bg-white/12 text-white' => request()->routeIs('cms.contact-submissions.*'),
-                            'text-white/72 hover:bg-white/8 hover:text-white' => ! request()->routeIs('cms.contact-submissions.*'),
+                            'bg-white/12 text-white' => request()->routeIs('contact-submissions.*'),
+                            'text-white/72 hover:bg-white/8 hover:text-white' => ! request()->routeIs('contact-submissions.*'),
                         ])
                     >
                         Contact Submissions

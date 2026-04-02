@@ -16,12 +16,16 @@
         $projectTypeField = data_get($form, 'fields.project_type', []);
         $messageField = data_get($form, 'fields.message', []);
         $projectTypeOptions = $projectTypeField['options'] ?? [];
+        $contactMapUrl = $siteContact['map_url'] ?? null;
+        $contactMapLabel = $siteContact['map_label'] ?? 'Open in Google Maps';
         $contactPhoneLine = collect($siteContact['phones'] ?? [])
             ->filter(static fn (?string $phone): bool => filled($phone))
             ->implode(' / ');
         $detailItems = array_values(array_filter([
             [
                 'lines' => $siteContact['address_lines'] ?? [],
+                'href' => $contactMapUrl,
+                'link_label' => $contactMapLabel,
             ],
             [
                 'lines' => array_values(array_filter([
@@ -236,9 +240,28 @@
                                             'sm:pl-4 lg:pl-6 whitespace-nowrap' => $loop->iteration === 2,
                                         ])
                                     >
-                                        @foreach ($item['lines'] ?? [] as $line)
-                                            <p>{{ $line }}</p>
-                                        @endforeach
+                                        @if (filled($item['href'] ?? null))
+                                            <a
+                                                href="{{ $item['href'] }}"
+                                                class="inline-flex flex-col gap-0.5 transition hover:text-[#5f5f5f]"
+                                                target="_blank"
+                                                rel="noreferrer noopener"
+                                            >
+                                                @foreach ($item['lines'] ?? [] as $line)
+                                                    <p>{{ $line }}</p>
+                                                @endforeach
+
+                                                @if (filled($item['link_label'] ?? null))
+                                                    <span class="mt-2 text-[0.7rem] font-medium uppercase tracking-[0.22em] text-[#ff8800]">
+                                                        {{ $item['link_label'] }}
+                                                    </span>
+                                                @endif
+                                            </a>
+                                        @else
+                                            @foreach ($item['lines'] ?? [] as $line)
+                                                <p>{{ $line }}</p>
+                                            @endforeach
+                                        @endif
                                     </div>
                                 @endforeach
                             </div>
@@ -250,8 +273,9 @@
 
         {{-- Media --}}
         @include('frontend.partials.media-section', [
-            'media' => $page['media'] ?? [],
-            'sectionClass' => 'overflow-hidden bg-white pb-0',
+            // 'media' => $page['media'] ?? [],
+            // 'sectionClass' => 'overflow-hidden bg-white pb-0',
+               'media' => $media,
         ])
     </div>
 @endsection

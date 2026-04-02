@@ -16,13 +16,15 @@
 
         {{-- Difference --}}
         @include('frontend.partials.why-choose-us-section', [
-            'difference' => $page['difference'] ?? [],
-            'variant' => 'services',
+            // 'difference' => $page['difference'] ?? [],
+            'difference' => $differenceData,
+            'variant' => 'services', 
         ])
 
         {{-- Media --}}
         @include('frontend.partials.media-section', [
-            'media' => $page['media'] ?? [],
+            // 'media' => $page['media'] ?? [],
+               'media' => $media,
         ])
 
         {{-- Portfolio --}}

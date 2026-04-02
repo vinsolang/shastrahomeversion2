@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Shastra | Projects</title>
+        <meta name="description" content="Explore a portfolio of residential work with expandable project details, image galleries, and category filters.">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+        <link rel="preload" as="style" href="http://127.0.0.1:8082/build/assets/app-kTQwaPnN.css" /><link rel="preload" as="style" href="http://127.0.0.1:8082/build/assets/app-PTugdkvS.css" /><link rel="modulepreload" as="script" href="http://127.0.0.1:8082/build/assets/app-INpUWSY7.js" /><link rel="stylesheet" href="http://127.0.0.1:8082/build/assets/app-kTQwaPnN.css" /><link rel="stylesheet" href="http://127.0.0.1:8082/build/assets/app-PTugdkvS.css" /><script type="module" src="http://127.0.0.1:8082/build/assets/app-INpUWSY7.js"></script>    </head>
+    <body id="top" class="min-h-screen bg-[var(--color-canvas)] font-sans text-[var(--color-ink)] antialiased">
+        
+        <div class="fixed inset-x-0 top-0 -z-10 h-[36rem] bg-[radial-gradient(circle_at_top,_rgba(79,209,197,0.22),_transparent_45%),radial-gradient(circle_at_20%_20%,_rgba(244,114,22,0.12),_transparent_28%)]"></div>
+
+        
+        <header x-data="siteHeader()" @keydown.escape.window="open = false" class="sticky top-0 z-50 border-b border-black/8 bg-[var(--navbar-surface)]">
+    <div class="mx-auto flex h-[62px] max-w-[1904px] items-center justify-between gap-3 px-4 sm:gap-4 sm:px-5 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:justify-normal lg:gap-6 lg:px-[38px]">
+        
+        <a href="http://127.0.0.1:8082" class="flex items-center">
+            <img src="http://127.0.0.1:8082/assets/images/Shastra-Logo.png" alt="Shastra Home logo" class="h-[28px] w-[162px] shrink-0 object-contain object-left sm:h-[32px] sm:w-[185px] lg:h-[38px] lg:w-auto">
+        </a>
+
+        
+        <nav class="group hidden h-full w-max items-center justify-center self-stretch justify-self-center gap-[clamp(24px,2.3vw,44px)] xl:gap-[clamp(34px,3.5vw,72px)] lg:flex">
+                            
+                <a
+                    href="http://127.0.0.1:8082"
+                    class="relative inline-flex h-full items-center justify-center px-[0.55rem] text-center text-[15px] leading-none text-[var(--navbar-ink)] after:absolute after:inset-x-0 after:bottom-0 after:h-1 after:origin-center after:scale-x-0 after:bg-[var(--navbar-accent)] after:transition-transform after:duration-200 font-normal hover:after:scale-x-100"
+                >
+                    Home
+                </a>
+                            
+                <a
+                    href="http://127.0.0.1:8082/services"
+                    class="relative inline-flex h-full items-center justify-center px-[0.55rem] text-center text-[15px] leading-none text-[var(--navbar-ink)] after:absolute after:inset-x-0 after:bottom-0 after:h-1 after:origin-center after:scale-x-0 after:bg-[var(--navbar-accent)] after:transition-transform after:duration-200 font-normal hover:after:scale-x-100"
+                >
+                    Services
+                </a>
+                            
+                <a
+                    href="http://127.0.0.1:8082/about-us"
+                    class="relative inline-flex h-full items-center justify-center px-[0.55rem] text-center text-[15px] leading-none text-[var(--navbar-ink)] after:absolute after:inset-x-0 after:bottom-0 after:h-1 after:origin-center after:scale-x-0 after:bg-[var(--navbar-accent)] after:transition-transform after:duration-200 font-normal hover:after:scale-x-100"
+                >
+                    About Us
+                </a>
+                            
+                <a
+                    href="http://127.0.0.1:8082/projects"
+                    class="relative inline-flex h-full items-center justify-center px-[0.55rem] text-center text-[15px] leading-none text-[var(--navbar-ink)] after:absolute after:inset-x-0 after:bottom-0 after:h-1 after:origin-center after:scale-x-0 after:bg-[var(--navbar-accent)] after:transition-transform after:duration-200 font-bold after:scale-x-100 lg:group-hover:after:scale-x-0 lg:hover:after:scale-x-100"
+                >
+                    Projects
+                </a>
+                            
+                <a
+                    href="http://127.0.0.1:8082/templates"
+                    class="relative inline-flex h-full items-center justify-center px-[0.55rem] text-center text-[15px] leading-none text-[var(--navbar-ink)] after:absolute after:inset-x-0 after:bottom-0 after:h-1 after:origin-center after:scale-x-0 after:bg-[var(--navbar-accent)] after:transition-transform after:duration-200 font-normal hover:after:scale-x-100"
+                >
+                    Templates
+                </a>
+                            
+                <a
+                    href="http://127.0.0.1:8082/contact"
+                    class="relative inline-flex h-full items-center justify-center px-[0.55rem] text-center text-[15px] leading-none text-[var(--navbar-ink)] after:absolute after:inset-x-0 after:bottom-0 after:h-1 after:origin-center after:scale-x-0 after:bg-[var(--navbar-accent)] after:transition-transform after:duration-200 font-normal hover:after:scale-x-100"
+                >
+                    Contact us
+                </a>
+                    </nav>
+
+        
+                    <button
+                type="button"
+                class="group relative ml-auto inline-flex h-10 w-10 shrink-0 items-center justify-center bg-transparent transition-transform duration-200 ease-out hover:scale-[1.04] lg:hidden"
+                @click="open = ! open"
+                :aria-expanded="open.toString()"
+                :aria-label="open ? 'Close menu' : 'Open menu'"
+            >
+                <span class="absolute left-1/2 h-[2.5px] w-6 -translate-x-1/2 rounded-full bg-[var(--navbar-accent)] transition-all duration-200 ease-out group-hover:w-[26px] -translate-y-[7px]"></span>
+                <span class="absolute left-1/2 h-[2.5px] w-6 -translate-x-1/2 rounded-full bg-[var(--navbar-accent)] transition-all duration-200 ease-out group-hover:w-[26px]"></span>
+                <span class="absolute left-1/2 h-[2.5px] w-6 -translate-x-1/2 rounded-full bg-[var(--navbar-accent)] transition-all duration-200 ease-out group-hover:w-[26px] translate-y-[7px]"></span>
+            </button>
+        
+        
+                    <button
+                type="button"
+                class="group relative ml-auto hidden h-10 w-10 shrink-0 items-center justify-center bg-transparent transition-transform duration-200 ease-out hover:scale-[1.04] lg:justify-self-end lg:inline-flex"
+                @click="open = ! open"
+                :aria-expanded="open.toString()"
+                :aria-label="open ? 'Close menu' : 'Open menu'"
+            >
+                <span class="absolute left-1/2 h-[2.5px] w-6 -translate-x-1/2 rounded-full bg-[var(--navbar-accent)] transition-all duration-200 ease-out group-hover:w-[26px] -translate-y-[7px]"></span>
+                <span class="absolute left-1/2 h-[2.5px] w-6 -translate-x-1/2 rounded-full bg-[var(--navbar-accent)] transition-all duration-200 ease-out group-hover:w-[26px]"></span>
+                <span class="absolute left-1/2 h-[2.5px] w-6 -translate-x-1/2 rounded-full bg-[var(--navbar-accent)] transition-all duration-200 ease-out group-hover:w-[26px] translate-y-[7px]"></span>
+            </button>
+            </div>
+
+            
+        <div
+            x-cloak
+            x-show="open"
+            x-transition.opacity
+            class="fixed inset-x-0 bottom-0 top-[62px] z-[60] bg-transparent"
+            @click="open = false"
+        ></div>
+
+        
+        <aside
+            x-cloak
+            x-show="open"
+            x-transition:enter="transition duration-300 ease-out"
+            x-transition:enter-start="translate-x-full opacity-0"
+            x-transition:enter-end="translate-x-0 opacity-100"
+            x-transition:leave="transition duration-200 ease-in"
+            x-transition:leave-start="translate-x-0 opacity-100"
+            x-transition:leave-end="translate-x-full opacity-0"
+            class="fixed right-0 top-[62px] z-[70] flex h-[calc(100vh-62px)] max-h-[864px] w-[min(426px,92vw)] flex-col overflow-y-auto bg-[rgba(30,30,30,0.95)] px-6 pb-8 pt-6 text-white shadow-2xl sm:px-8 sm:pb-10 sm:pt-8 lg:w-[426px]"
+        >
+            <div>
+                <button
+                    type="button"
+                    class="flex h-10 w-10 items-center justify-center text-white/90 transition hover:text-white"
+                    @click="open = false"
+                    aria-label="Close menu"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M6 6l12 12M18 6L6 18" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="mt-10 flex flex-col gap-2 border-t border-white/10 pt-8 lg:hidden" aria-label="Primary navigation">
+                                    
+                    <a
+                        href="http://127.0.0.1:8082"
+                        @click="open = false"
+                        class="rounded-full px-4 py-3 text-base font-medium text-white/82 transition hover:bg-white/6 hover:text-white"
+                    >
+                        Home
+                    </a>
+                                    
+                    <a
+                        href="http://127.0.0.1:8082/services"
+                        @click="open = false"
+                        class="rounded-full px-4 py-3 text-base font-medium text-white/82 transition hover:bg-white/6 hover:text-white"
+                    >
+                        Services
+                    </a>
+                                    
+                    <a
+                        href="http://127.0.0.1:8082/about-us"
+                        @click="open = false"
+                        class="rounded-full px-4 py-3 text-base font-medium text-white/82 transition hover:bg-white/6 hover:text-white"
+                    >
+                        About Us
+                    </a>
+                                    
+                    <a
+                        href="http://127.0.0.1:8082/projects"
+                        @click="open = false"
+                        class="rounded-full px-4 py-3 text-base font-medium text-white/82 transition hover:bg-white/6 hover:text-white bg-white/10 text-white"
+                    >
+                        Projects
+                    </a>
+                                    
+                    <a
+                        href="http://127.0.0.1:8082/templates"
+                        @click="open = false"
+                        class="rounded-full px-4 py-3 text-base font-medium text-white/82 transition hover:bg-white/6 hover:text-white"
+                    >
+                        Templates
+                    </a>
+                                    
+                    <a
+                        href="http://127.0.0.1:8082/contact"
+                        @click="open = false"
+                        class="rounded-full px-4 py-3 text-base font-medium text-white/82 transition hover:bg-white/6 hover:text-white"
+                    >
+                        Contact us
+                    </a>
+                            </nav>
+
+            
+            <div class="mt-10 pb-4 sm:mt-auto">
+                <p class="text-[18px] font-semibold text-[#FF8800]">Contact</p>
+                <div class="mt-4 text-[14px] leading-7 text-white/82">
+                    <div>
+                                                    <p>123 Construction Ave, Bangalore,</p>
+                                                    <p>Lorem, Phnom Penh, Cambodia</p>
+                                            </div>
+
+                    <div class="mt-5">
+                                                    
+                            <a href="tel:+85598660266" class="block">
+                                +855 98 660 266
+                            </a>
+                                                    
+                            <a href="tel:+85560660266" class="block">
+                                +855 60 660 266
+                            </a>
+                                            </div>
+
+                    <a href="mailto:info@shastraconstruction.com" class="mt-5 block underline underline-offset-4">
+                        info@shastraconstruction.com
+                    </a>
+                </div>
+
+                <div class="mt-10">
+                    <p class="text-[18px] font-semibold text-[#FF8800]">Follow us on</p>
+
+                    <div class="mt-6 flex flex-wrap items-center gap-4">
+                                                    
+                            <button type="button" class="inline-flex h-11 w-11 items-center justify-center bg-transparent p-0 transition-transform duration-200 ease-out hover:-translate-y-0.5 sm:h-[42px] sm:w-[42px]" aria-label="Facebook">
+                                                                    <img
+                                        src="http://127.0.0.1:8082/assets/images/Social media/FB.webp?v=1774012804"
+                                        alt=""
+                                        class="block h-full w-full shrink-0 object-contain"
+                                        width="44"
+                                        height="44"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                                            </button>
+                                                    
+                            <button type="button" class="inline-flex h-11 w-11 items-center justify-center bg-transparent p-0 transition-transform duration-200 ease-out hover:-translate-y-0.5 sm:h-[42px] sm:w-[42px]" aria-label="TikTok">
+                                                                    <img
+                                        src="http://127.0.0.1:8082/assets/images/Social media/TT.png?v=1774012642"
+                                        alt=""
+                                        class="block h-full w-full shrink-0 object-contain"
+                                        width="44"
+                                        height="44"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                                            </button>
+                                                    
+                            <button type="button" class="inline-flex h-11 w-11 items-center justify-center bg-transparent p-0 transition-transform duration-200 ease-out hover:-translate-y-0.5 sm:h-[42px] sm:w-[42px]" aria-label="Instagram">
+                                                                    <img
+                                        src="http://127.0.0.1:8082/assets/images/Social media/IG.png?v=1774012642"
+                                        alt=""
+                                        class="block h-full w-full shrink-0 object-contain"
+                                        width="44"
+                                        height="44"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                                            </button>
+                                                    
+                            <button type="button" class="inline-flex h-11 w-11 items-center justify-center bg-transparent p-0 transition-transform duration-200 ease-out hover:-translate-y-0.5 sm:h-[42px] sm:w-[42px]" aria-label="Telegram">
+                                                                    <img
+                                        src="http://127.0.0.1:8082/assets/images/Social media/TG.png?v=1774012642"
+                                        alt=""
+                                        class="block h-full w-full shrink-0 object-contain"
+                                        width="44"
+                                        height="44"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                                            </button>
+                                            </div>
+                </div>
+            </div>
+        </aside>
+    </header>
+
+        
+        <main>
+                
+    <div class="bg-white text-[#1f1f1f]">
+        
+        <section
+            x-data="projectsPortfolio(JSON.parse('{\u0022tabs\u0022:[\u0022Renovation\u0022,\u0022Construction\u0022,\u0022Architectural design\u0022,\u0022Interior\u0022],\u0022projects\u0022:[{\u0022type_label\u0022:\u0022Residential\u0022,\u0022title\u0022:\u0022Villa Prey Veng\u0022,\u0022specification\u0022:\u00222,400 sq ft, 4 Bed, 3 Bath\u0022,\u0022location\u0022:\u0022Prey Veng Province\u0022,\u0022concept\u0022:\u0022This residential concept focuses on a bright, open frontage with a modern facade and practical family-first planning.\u0022,\u0022categories\u0022:[\u0022Renovation\u0022,\u0022Construction\u0022],\u0022id\u0022:\u0022project-1\u0022,\u0022cover_image\u0022:\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (1)\\\/Shastra Home 01_View 01.jpg\u0022,\u0022gallery\u0022:[\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (1)\\\/Shastra Home 01_View 01.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (1)\\\/Shastra Home 01_View 02.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (1)\\\/Shastra Home 01_View 03.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (1)\\\/Shastra Home 01_View 04.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (1)\\\/Shastra Home 01_View 05.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (1)\\\/Shastra Home 01_View 06.jpg\u0022]},{\u0022type_label\u0022:\u0022Residential\u0022,\u0022title\u0022:\u0022Garden Court House\u0022,\u0022specification\u0022:\u00222,180 sq ft, 3 Bed, 3 Bath\u0022,\u0022location\u0022:\u0022Kandal Province\u0022,\u0022concept\u0022:\u0022A calm home arranged around soft landscaping, clear circulation, and a welcoming front elevation for suburban living.\u0022,\u0022categories\u0022:[\u0022Renovation\u0022,\u0022Architectural design\u0022],\u0022id\u0022:\u0022project-2\u0022,\u0022cover_image\u0022:\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (2)\\\/Shastra Home 02_View 01.jpg\u0022,\u0022gallery\u0022:[\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (2)\\\/Shastra Home 02_View 01.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (2)\\\/Shastra Home 02_View 02.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (2)\\\/Shastra Home 02_View 03.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (2)\\\/Shastra Home 02_View 04.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (2)\\\/Shastra Home 02_View 05.jpg\u0022]},{\u0022type_label\u0022:\u0022Residential\u0022,\u0022title\u0022:\u0022Palm View Residence\u0022,\u0022specification\u0022:\u00222,060 sq ft, 3 Bed, 2 Bath\u0022,\u0022location\u0022:\u0022Takeo Province\u0022,\u0022concept\u0022:\u0022This scheme balances elegant proportions with breezy living spaces and warm finishes suited for everyday comfort.\u0022,\u0022categories\u0022:[\u0022Renovation\u0022,\u0022Interior\u0022],\u0022id\u0022:\u0022project-3\u0022,\u0022cover_image\u0022:\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (3)\\\/Shastra Home 03_View 01.jpg\u0022,\u0022gallery\u0022:[\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (3)\\\/Shastra Home 03_View 01.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (3)\\\/Shastra Home 03_View 02.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (3)\\\/Shastra Home 03_View 03.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (3)\\\/Shastra Home 03_View 04.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (3)\\\/Shastra Home 03_View 05.jpg\u0022]},{\u0022type_label\u0022:\u0022Residential\u0022,\u0022title\u0022:\u0022Courtyard Villa\u0022,\u0022specification\u0022:\u00222,520 sq ft, 4 Bed, 3 Bath\u0022,\u0022location\u0022:\u0022Kampong Speu\u0022,\u0022concept\u0022:\u0022A low-rise villa designed with stronger street presence, shaded outdoor transitions, and straightforward construction detailing.\u0022,\u0022categories\u0022:[\u0022Renovation\u0022,\u0022Construction\u0022,\u0022Architectural design\u0022],\u0022id\u0022:\u0022project-4\u0022,\u0022cover_image\u0022:\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (4)\\\/Shastra Home 04_View 01.jpg\u0022,\u0022gallery\u0022:[\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (4)\\\/Shastra Home 04_View 01.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (4)\\\/Shastra Home 04_View 02.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (4)\\\/Shastra Home 04_View 03.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (4)\\\/Shastra Home 04_View 04.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (4)\\\/Shastra Home 04_View 05.jpg\u0022]},{\u0022type_label\u0022:\u0022Residential\u0022,\u0022title\u0022:\u0022Modern Family Home\u0022,\u0022specification\u0022:\u00222,280 sq ft, 4 Bed, 3 Bath\u0022,\u0022location\u0022:\u0022Siem Reap\u0022,\u0022concept\u0022:\u0022A practical family home shaped by efficient room planning, clean lines, and a restrained material palette.\u0022,\u0022categories\u0022:[\u0022Renovation\u0022,\u0022Construction\u0022,\u0022Interior\u0022],\u0022id\u0022:\u0022project-5\u0022,\u0022cover_image\u0022:\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (5)\\\/Shastra Home 05_View 01.jpg\u0022,\u0022gallery\u0022:[\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (5)\\\/Shastra Home 05_View 01.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (5)\\\/Shastra Home 05_View 02.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (5)\\\/Shastra Home 05_View 03.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (5)\\\/Shastra Home 05_View 04.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (5)\\\/Shastra Home 05_View 05.jpg\u0022]},{\u0022type_label\u0022:\u0022Residential\u0022,\u0022title\u0022:\u0022Skyline Pavilion\u0022,\u0022specification\u0022:\u00222,340 sq ft, 4 Bed, 3 Bath\u0022,\u0022location\u0022:\u0022Phnom Penh\u0022,\u0022concept\u0022:\u0022This featured placeholder project stands in for the expanded portfolio state, showing a fuller story and the complete image set.\u0022,\u0022categories\u0022:[\u0022Renovation\u0022,\u0022Architectural design\u0022,\u0022Interior\u0022],\u0022id\u0022:\u0022project-6\u0022,\u0022cover_image\u0022:\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (6)\\\/Shastra Home 06_View 01.jpg\u0022,\u0022gallery\u0022:[\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (6)\\\/Shastra Home 06_View 01.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (6)\\\/Shastra Home 06_View 02.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (6)\\\/Shastra Home 06_View 03.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (6)\\\/Shastra Home 06_View 04.jpg\u0022,\u0022http:\\\/\\\/127.0.0.1:8082\\\/assets\\\/images\\\/Projects\\\/home (6)\\\/Shastra Home 06_View 05.jpg\u0022]}]}'))"
+            class="pt-12 pb-16 sm:pt-14 lg:pt-18 lg:pb-20"
+        >
+            <div class="mx-auto max-w-[1904px]">
+                <div class="mx-auto max-w-[78rem] px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="max-w-[24rem] sm:max-w-[36rem]" data-aos="fade-up">
+                        <p class="text-[0.8rem] font-medium uppercase tracking-[0.42em] text-[#ff8800] sm:text-[0.9rem]">
+                            OUR
+                        </p>
+
+                        <h1 class="mt-3 font-sans text-[2.6rem] leading-none font-light tracking-[-0.08em] text-[#1f1f1f] sm:text-[3.6rem] lg:text-[4.5rem]">
+                            PORTFOLIO
+                        </h1>
+
+                        <p class="mt-4 max-w-[34rem] text-[0.95rem] leading-[1.45] text-[#5f5f5f] sm:text-[1rem]">
+                            Explore a portfolio of residential work with expandable project details, image galleries, and category filters.
+                        </p>
+                    </div>
+
+                    
+                    <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 sm:gap-x-7" data-aos="fade-up" data-aos-delay="70">
+                                                    <button
+                                type="button"
+                                class="project-filter-tab"
+                                :class="{ 'project-filter-tab--active': activeCategory === 'Renovation' }"
+                                @click="setCategory('Renovation')"
+                            >
+                                Renovation
+                            </button>
+                                                    <button
+                                type="button"
+                                class="project-filter-tab"
+                                :class="{ 'project-filter-tab--active': activeCategory === 'Construction' }"
+                                @click="setCategory('Construction')"
+                            >
+                                Construction
+                            </button>
+                                                    <button
+                                type="button"
+                                class="project-filter-tab"
+                                :class="{ 'project-filter-tab--active': activeCategory === 'Architectural design' }"
+                                @click="setCategory('Architectural design')"
+                            >
+                                Architectural design
+                            </button>
+                                                    <button
+                                type="button"
+                                class="project-filter-tab"
+                                :class="{ 'project-filter-tab--active': activeCategory === 'Interior' }"
+                                @click="setCategory('Interior')"
+                            >
+                                Interior
+                            </button>
+                                            </div>
+
+                    
+                    <div class="mt-8 space-y-5 sm:mt-10 lg:space-y-6">
+                        <template x-if="visibleProjectCount() === 0">
+                            <div class="rounded-[1.75rem] border border-black/8 bg-[#faf7f2] px-6 py-10 text-center text-[0.96rem] text-[#5f5f5f]">
+                                No projects are available in this category yet.
+                            </div>
+                        </template>
+
+                                                    <article
+                                x-show="isProjectVisible('project-1')"
+                                x-transition.opacity.duration.250ms
+                                class="project-card"
+                                :class="{ 'project-card--expanded': isExpanded('project-1') }"
+                                role="button"
+                                tabindex="0"
+                                @click="if (! $event.target.closest('[data-gallery-control]')) { toggleProject('project-1'); }"
+                                @keydown.enter.self.prevent="toggleProject('project-1')"
+                                @keydown.space.self.prevent="toggleProject('project-1')"
+                                @keydown.arrow-right.self.prevent="if (isExpanded('project-1')) { nextSlide('project-1'); }"
+                                @keydown.arrow-left.self.prevent="if (isExpanded('project-1')) { previousSlide('project-1'); }"
+                                :aria-expanded="isExpanded('project-1').toString()"
+                                aria-controls="project-detail-project-1"
+                            >
+                                
+                                <div class="project-row" :class="{ 'project-row--expanded': isExpanded('project-1') }">
+                                    <div
+                                        class="project-row__preview"
+                                        @touchstart.passive="if (isExpanded('project-1')) { onTouchStart($event, 'project-1'); }"
+                                        @touchmove.passive="if (isExpanded('project-1')) { onTouchMove($event); }"
+                                        @touchend="if (isExpanded('project-1')) { onTouchEnd(); }"
+                                        @touchcancel="if (isExpanded('project-1')) { onTouchEnd(); }"
+                                    >
+                                        <img
+                                            :src="isExpanded('project-1') ? activeImage('project-1') : 'http://127.0.0.1:8082/assets/images/Projects/home (1)/Shastra Home 01_View 01.jpg'"
+                                            :alt="isExpanded('project-1') ? 'Villa Prey Veng image ' + activeSlideNumber('project-1') : 'Villa Prey Veng preview'"
+                                            class="h-full w-full object-cover"
+                                            loading="lazy"
+                                            decoding="async"
+                                        >
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-1')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-end p-4 sm:p-5"
+                                        >
+                                            <p class="project-gallery-counter" aria-live="polite">
+                                                <span x-text="activeSlideNumber('project-1')">1</span>
+                                                <span>/</span>
+                                                <span>6</span>
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-1')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,rgba(12,12,12,0)_0%,rgba(12,12,12,0.72)_100%)]"
+                                        ></div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-1')"
+                                            x-transition.opacity.duration.200ms
+                                            class="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 sm:p-5"
+                                        >
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="previousSlide('project-1')"
+                                                aria-label="Show previous image for Villa Prey Veng"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 19l-7-7 7-7" />
+                                                </svg>
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="nextSlide('project-1')"
+                                                aria-label="Show next image for Villa Prey Veng"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m9 5 7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="project-row__meta"
+                                        id="project-detail-project-1"
+                                    >
+                                        <div>
+                                            <h2 class="project-row__title">Villa Prey Veng</h2>
+                                        </div>
+
+                                        <div class="space-y-2">
+                                            <p class="project-row__label">Specifications</p>
+                                            <p class="project-row__detail">2,400 sq ft, 4 Bed, 3 Bath</p>
+                                            <p class="project-row__detail">Prey Veng Province</p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-1')"
+                                            x-transition.opacity.duration.200ms
+                                            class="space-y-2"
+                                        >
+                                            <p class="project-row__label">Concept</p>
+                                            <p class="project-row__detail project-row__concept">This residential concept focuses on a bright, open frontage with a modern facade and practical family-first planning.</p>
+                                        </div>
+
+                                        <div class="mt-auto flex items-center justify-between gap-4 pt-4">
+                                            <p
+                                                x-cloak
+                                                x-show="isExpanded('project-1')"
+                                                x-transition.opacity.duration.200ms
+                                                class="text-[0.74rem] uppercase tracking-[0.28em] text-[#9b9b9b]"
+                                            >
+                                                Swipe, arrows, and thumbnails
+                                            </p>
+
+                                            <span
+                                                class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#ff8800]/35 text-[#ff8800] transition-transform duration-200"
+                                                :class="{ 'rotate-180': isExpanded('project-1') }"
+                                                aria-hidden="true"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="m6 9 6 6 6-6" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        x-cloak
+                                        x-show="isExpanded('project-1')"
+                                        x-transition.opacity.duration.250ms
+                                        class="project-gallery-panel"
+                                    >
+                                        <div class="project-gallery-thumb-track">
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-1') === 0 }"
+                                                    :aria-pressed="(activeSlide('project-1') === 0).toString()"
+                                                    @click.stop="setSlide('project-1', 0)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (1)/Shastra Home 01_View 01.jpg"
+                                                        alt="Villa Prey Veng thumbnail 1"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-1') === 1 }"
+                                                    :aria-pressed="(activeSlide('project-1') === 1).toString()"
+                                                    @click.stop="setSlide('project-1', 1)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (1)/Shastra Home 01_View 02.jpg"
+                                                        alt="Villa Prey Veng thumbnail 2"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-1') === 2 }"
+                                                    :aria-pressed="(activeSlide('project-1') === 2).toString()"
+                                                    @click.stop="setSlide('project-1', 2)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (1)/Shastra Home 01_View 03.jpg"
+                                                        alt="Villa Prey Veng thumbnail 3"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-1') === 3 }"
+                                                    :aria-pressed="(activeSlide('project-1') === 3).toString()"
+                                                    @click.stop="setSlide('project-1', 3)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (1)/Shastra Home 01_View 04.jpg"
+                                                        alt="Villa Prey Veng thumbnail 4"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-1') === 4 }"
+                                                    :aria-pressed="(activeSlide('project-1') === 4).toString()"
+                                                    @click.stop="setSlide('project-1', 4)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (1)/Shastra Home 01_View 05.jpg"
+                                                        alt="Villa Prey Veng thumbnail 5"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-1') === 5 }"
+                                                    :aria-pressed="(activeSlide('project-1') === 5).toString()"
+                                                    @click.stop="setSlide('project-1', 5)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (1)/Shastra Home 01_View 06.jpg"
+                                                        alt="Villa Prey Veng thumbnail 6"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </article>
+                                                    <article
+                                x-show="isProjectVisible('project-2')"
+                                x-transition.opacity.duration.250ms
+                                class="project-card"
+                                :class="{ 'project-card--expanded': isExpanded('project-2') }"
+                                role="button"
+                                tabindex="0"
+                                @click="if (! $event.target.closest('[data-gallery-control]')) { toggleProject('project-2'); }"
+                                @keydown.enter.self.prevent="toggleProject('project-2')"
+                                @keydown.space.self.prevent="toggleProject('project-2')"
+                                @keydown.arrow-right.self.prevent="if (isExpanded('project-2')) { nextSlide('project-2'); }"
+                                @keydown.arrow-left.self.prevent="if (isExpanded('project-2')) { previousSlide('project-2'); }"
+                                :aria-expanded="isExpanded('project-2').toString()"
+                                aria-controls="project-detail-project-2"
+                            >
+                                
+                                <div class="project-row" :class="{ 'project-row--expanded': isExpanded('project-2') }">
+                                    <div
+                                        class="project-row__preview"
+                                        @touchstart.passive="if (isExpanded('project-2')) { onTouchStart($event, 'project-2'); }"
+                                        @touchmove.passive="if (isExpanded('project-2')) { onTouchMove($event); }"
+                                        @touchend="if (isExpanded('project-2')) { onTouchEnd(); }"
+                                        @touchcancel="if (isExpanded('project-2')) { onTouchEnd(); }"
+                                    >
+                                        <img
+                                            :src="isExpanded('project-2') ? activeImage('project-2') : 'http://127.0.0.1:8082/assets/images/Projects/home (2)/Shastra Home 02_View 01.jpg'"
+                                            :alt="isExpanded('project-2') ? 'Garden Court House image ' + activeSlideNumber('project-2') : 'Garden Court House preview'"
+                                            class="h-full w-full object-cover"
+                                            loading="lazy"
+                                            decoding="async"
+                                        >
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-2')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-end p-4 sm:p-5"
+                                        >
+                                            <p class="project-gallery-counter" aria-live="polite">
+                                                <span x-text="activeSlideNumber('project-2')">1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-2')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,rgba(12,12,12,0)_0%,rgba(12,12,12,0.72)_100%)]"
+                                        ></div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-2')"
+                                            x-transition.opacity.duration.200ms
+                                            class="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 sm:p-5"
+                                        >
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="previousSlide('project-2')"
+                                                aria-label="Show previous image for Garden Court House"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 19l-7-7 7-7" />
+                                                </svg>
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="nextSlide('project-2')"
+                                                aria-label="Show next image for Garden Court House"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m9 5 7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="project-row__meta"
+                                        id="project-detail-project-2"
+                                    >
+                                        <div>
+                                            <h2 class="project-row__title">Garden Court House</h2>
+                                        </div>
+
+                                        <div class="space-y-2">
+                                            <p class="project-row__label">Specifications</p>
+                                            <p class="project-row__detail">2,180 sq ft, 3 Bed, 3 Bath</p>
+                                            <p class="project-row__detail">Kandal Province</p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-2')"
+                                            x-transition.opacity.duration.200ms
+                                            class="space-y-2"
+                                        >
+                                            <p class="project-row__label">Concept</p>
+                                            <p class="project-row__detail project-row__concept">A calm home arranged around soft landscaping, clear circulation, and a welcoming front elevation for suburban living.</p>
+                                        </div>
+
+                                        <div class="mt-auto flex items-center justify-between gap-4 pt-4">
+                                            <p
+                                                x-cloak
+                                                x-show="isExpanded('project-2')"
+                                                x-transition.opacity.duration.200ms
+                                                class="text-[0.74rem] uppercase tracking-[0.28em] text-[#9b9b9b]"
+                                            >
+                                                Swipe, arrows, and thumbnails
+                                            </p>
+
+                                            <span
+                                                class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#ff8800]/35 text-[#ff8800] transition-transform duration-200"
+                                                :class="{ 'rotate-180': isExpanded('project-2') }"
+                                                aria-hidden="true"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="m6 9 6 6 6-6" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        x-cloak
+                                        x-show="isExpanded('project-2')"
+                                        x-transition.opacity.duration.250ms
+                                        class="project-gallery-panel"
+                                    >
+                                        <div class="project-gallery-thumb-track">
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-2') === 0 }"
+                                                    :aria-pressed="(activeSlide('project-2') === 0).toString()"
+                                                    @click.stop="setSlide('project-2', 0)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (2)/Shastra Home 02_View 01.jpg"
+                                                        alt="Garden Court House thumbnail 1"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-2') === 1 }"
+                                                    :aria-pressed="(activeSlide('project-2') === 1).toString()"
+                                                    @click.stop="setSlide('project-2', 1)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (2)/Shastra Home 02_View 02.jpg"
+                                                        alt="Garden Court House thumbnail 2"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-2') === 2 }"
+                                                    :aria-pressed="(activeSlide('project-2') === 2).toString()"
+                                                    @click.stop="setSlide('project-2', 2)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (2)/Shastra Home 02_View 03.jpg"
+                                                        alt="Garden Court House thumbnail 3"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-2') === 3 }"
+                                                    :aria-pressed="(activeSlide('project-2') === 3).toString()"
+                                                    @click.stop="setSlide('project-2', 3)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (2)/Shastra Home 02_View 04.jpg"
+                                                        alt="Garden Court House thumbnail 4"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-2') === 4 }"
+                                                    :aria-pressed="(activeSlide('project-2') === 4).toString()"
+                                                    @click.stop="setSlide('project-2', 4)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (2)/Shastra Home 02_View 05.jpg"
+                                                        alt="Garden Court House thumbnail 5"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </article>
+                                                    <article
+                                x-show="isProjectVisible('project-3')"
+                                x-transition.opacity.duration.250ms
+                                class="project-card"
+                                :class="{ 'project-card--expanded': isExpanded('project-3') }"
+                                role="button"
+                                tabindex="0"
+                                @click="if (! $event.target.closest('[data-gallery-control]')) { toggleProject('project-3'); }"
+                                @keydown.enter.self.prevent="toggleProject('project-3')"
+                                @keydown.space.self.prevent="toggleProject('project-3')"
+                                @keydown.arrow-right.self.prevent="if (isExpanded('project-3')) { nextSlide('project-3'); }"
+                                @keydown.arrow-left.self.prevent="if (isExpanded('project-3')) { previousSlide('project-3'); }"
+                                :aria-expanded="isExpanded('project-3').toString()"
+                                aria-controls="project-detail-project-3"
+                            >
+                                
+                                <div class="project-row" :class="{ 'project-row--expanded': isExpanded('project-3') }">
+                                    <div
+                                        class="project-row__preview"
+                                        @touchstart.passive="if (isExpanded('project-3')) { onTouchStart($event, 'project-3'); }"
+                                        @touchmove.passive="if (isExpanded('project-3')) { onTouchMove($event); }"
+                                        @touchend="if (isExpanded('project-3')) { onTouchEnd(); }"
+                                        @touchcancel="if (isExpanded('project-3')) { onTouchEnd(); }"
+                                    >
+                                        <img
+                                            :src="isExpanded('project-3') ? activeImage('project-3') : 'http://127.0.0.1:8082/assets/images/Projects/home (3)/Shastra Home 03_View 01.jpg'"
+                                            :alt="isExpanded('project-3') ? 'Palm View Residence image ' + activeSlideNumber('project-3') : 'Palm View Residence preview'"
+                                            class="h-full w-full object-cover"
+                                            loading="lazy"
+                                            decoding="async"
+                                        >
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-3')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-end p-4 sm:p-5"
+                                        >
+                                            <p class="project-gallery-counter" aria-live="polite">
+                                                <span x-text="activeSlideNumber('project-3')">1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-3')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,rgba(12,12,12,0)_0%,rgba(12,12,12,0.72)_100%)]"
+                                        ></div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-3')"
+                                            x-transition.opacity.duration.200ms
+                                            class="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 sm:p-5"
+                                        >
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="previousSlide('project-3')"
+                                                aria-label="Show previous image for Palm View Residence"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 19l-7-7 7-7" />
+                                                </svg>
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="nextSlide('project-3')"
+                                                aria-label="Show next image for Palm View Residence"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m9 5 7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="project-row__meta"
+                                        id="project-detail-project-3"
+                                    >
+                                        <div>
+                                            <h2 class="project-row__title">Palm View Residence</h2>
+                                        </div>
+
+                                        <div class="space-y-2">
+                                            <p class="project-row__label">Specifications</p>
+                                            <p class="project-row__detail">2,060 sq ft, 3 Bed, 2 Bath</p>
+                                            <p class="project-row__detail">Takeo Province</p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-3')"
+                                            x-transition.opacity.duration.200ms
+                                            class="space-y-2"
+                                        >
+                                            <p class="project-row__label">Concept</p>
+                                            <p class="project-row__detail project-row__concept">This scheme balances elegant proportions with breezy living spaces and warm finishes suited for everyday comfort.</p>
+                                        </div>
+
+                                        <div class="mt-auto flex items-center justify-between gap-4 pt-4">
+                                            <p
+                                                x-cloak
+                                                x-show="isExpanded('project-3')"
+                                                x-transition.opacity.duration.200ms
+                                                class="text-[0.74rem] uppercase tracking-[0.28em] text-[#9b9b9b]"
+                                            >
+                                                Swipe, arrows, and thumbnails
+                                            </p>
+
+                                            <span
+                                                class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#ff8800]/35 text-[#ff8800] transition-transform duration-200"
+                                                :class="{ 'rotate-180': isExpanded('project-3') }"
+                                                aria-hidden="true"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="m6 9 6 6 6-6" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        x-cloak
+                                        x-show="isExpanded('project-3')"
+                                        x-transition.opacity.duration.250ms
+                                        class="project-gallery-panel"
+                                    >
+                                        <div class="project-gallery-thumb-track">
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-3') === 0 }"
+                                                    :aria-pressed="(activeSlide('project-3') === 0).toString()"
+                                                    @click.stop="setSlide('project-3', 0)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (3)/Shastra Home 03_View 01.jpg"
+                                                        alt="Palm View Residence thumbnail 1"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-3') === 1 }"
+                                                    :aria-pressed="(activeSlide('project-3') === 1).toString()"
+                                                    @click.stop="setSlide('project-3', 1)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (3)/Shastra Home 03_View 02.jpg"
+                                                        alt="Palm View Residence thumbnail 2"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-3') === 2 }"
+                                                    :aria-pressed="(activeSlide('project-3') === 2).toString()"
+                                                    @click.stop="setSlide('project-3', 2)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (3)/Shastra Home 03_View 03.jpg"
+                                                        alt="Palm View Residence thumbnail 3"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-3') === 3 }"
+                                                    :aria-pressed="(activeSlide('project-3') === 3).toString()"
+                                                    @click.stop="setSlide('project-3', 3)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (3)/Shastra Home 03_View 04.jpg"
+                                                        alt="Palm View Residence thumbnail 4"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-3') === 4 }"
+                                                    :aria-pressed="(activeSlide('project-3') === 4).toString()"
+                                                    @click.stop="setSlide('project-3', 4)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (3)/Shastra Home 03_View 05.jpg"
+                                                        alt="Palm View Residence thumbnail 5"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </article>
+                                                    <article
+                                x-show="isProjectVisible('project-4')"
+                                x-transition.opacity.duration.250ms
+                                class="project-card"
+                                :class="{ 'project-card--expanded': isExpanded('project-4') }"
+                                role="button"
+                                tabindex="0"
+                                @click="if (! $event.target.closest('[data-gallery-control]')) { toggleProject('project-4'); }"
+                                @keydown.enter.self.prevent="toggleProject('project-4')"
+                                @keydown.space.self.prevent="toggleProject('project-4')"
+                                @keydown.arrow-right.self.prevent="if (isExpanded('project-4')) { nextSlide('project-4'); }"
+                                @keydown.arrow-left.self.prevent="if (isExpanded('project-4')) { previousSlide('project-4'); }"
+                                :aria-expanded="isExpanded('project-4').toString()"
+                                aria-controls="project-detail-project-4"
+                            >
+                                
+                                <div class="project-row" :class="{ 'project-row--expanded': isExpanded('project-4') }">
+                                    <div
+                                        class="project-row__preview"
+                                        @touchstart.passive="if (isExpanded('project-4')) { onTouchStart($event, 'project-4'); }"
+                                        @touchmove.passive="if (isExpanded('project-4')) { onTouchMove($event); }"
+                                        @touchend="if (isExpanded('project-4')) { onTouchEnd(); }"
+                                        @touchcancel="if (isExpanded('project-4')) { onTouchEnd(); }"
+                                    >
+                                        <img
+                                            :src="isExpanded('project-4') ? activeImage('project-4') : 'http://127.0.0.1:8082/assets/images/Projects/home (4)/Shastra Home 04_View 01.jpg'"
+                                            :alt="isExpanded('project-4') ? 'Courtyard Villa image ' + activeSlideNumber('project-4') : 'Courtyard Villa preview'"
+                                            class="h-full w-full object-cover"
+                                            loading="lazy"
+                                            decoding="async"
+                                        >
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-4')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-end p-4 sm:p-5"
+                                        >
+                                            <p class="project-gallery-counter" aria-live="polite">
+                                                <span x-text="activeSlideNumber('project-4')">1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-4')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,rgba(12,12,12,0)_0%,rgba(12,12,12,0.72)_100%)]"
+                                        ></div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-4')"
+                                            x-transition.opacity.duration.200ms
+                                            class="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 sm:p-5"
+                                        >
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="previousSlide('project-4')"
+                                                aria-label="Show previous image for Courtyard Villa"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 19l-7-7 7-7" />
+                                                </svg>
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="nextSlide('project-4')"
+                                                aria-label="Show next image for Courtyard Villa"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m9 5 7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="project-row__meta"
+                                        id="project-detail-project-4"
+                                    >
+                                        <div>
+                                            <h2 class="project-row__title">Courtyard Villa</h2>
+                                        </div>
+
+                                        <div class="space-y-2">
+                                            <p class="project-row__label">Specifications</p>
+                                            <p class="project-row__detail">2,520 sq ft, 4 Bed, 3 Bath</p>
+                                            <p class="project-row__detail">Kampong Speu</p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-4')"
+                                            x-transition.opacity.duration.200ms
+                                            class="space-y-2"
+                                        >
+                                            <p class="project-row__label">Concept</p>
+                                            <p class="project-row__detail project-row__concept">A low-rise villa designed with stronger street presence, shaded outdoor transitions, and straightforward construction detailing.</p>
+                                        </div>
+
+                                        <div class="mt-auto flex items-center justify-between gap-4 pt-4">
+                                            <p
+                                                x-cloak
+                                                x-show="isExpanded('project-4')"
+                                                x-transition.opacity.duration.200ms
+                                                class="text-[0.74rem] uppercase tracking-[0.28em] text-[#9b9b9b]"
+                                            >
+                                                Swipe, arrows, and thumbnails
+                                            </p>
+
+                                            <span
+                                                class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#ff8800]/35 text-[#ff8800] transition-transform duration-200"
+                                                :class="{ 'rotate-180': isExpanded('project-4') }"
+                                                aria-hidden="true"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="m6 9 6 6 6-6" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        x-cloak
+                                        x-show="isExpanded('project-4')"
+                                        x-transition.opacity.duration.250ms
+                                        class="project-gallery-panel"
+                                    >
+                                        <div class="project-gallery-thumb-track">
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-4') === 0 }"
+                                                    :aria-pressed="(activeSlide('project-4') === 0).toString()"
+                                                    @click.stop="setSlide('project-4', 0)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (4)/Shastra Home 04_View 01.jpg"
+                                                        alt="Courtyard Villa thumbnail 1"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-4') === 1 }"
+                                                    :aria-pressed="(activeSlide('project-4') === 1).toString()"
+                                                    @click.stop="setSlide('project-4', 1)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (4)/Shastra Home 04_View 02.jpg"
+                                                        alt="Courtyard Villa thumbnail 2"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-4') === 2 }"
+                                                    :aria-pressed="(activeSlide('project-4') === 2).toString()"
+                                                    @click.stop="setSlide('project-4', 2)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (4)/Shastra Home 04_View 03.jpg"
+                                                        alt="Courtyard Villa thumbnail 3"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-4') === 3 }"
+                                                    :aria-pressed="(activeSlide('project-4') === 3).toString()"
+                                                    @click.stop="setSlide('project-4', 3)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (4)/Shastra Home 04_View 04.jpg"
+                                                        alt="Courtyard Villa thumbnail 4"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-4') === 4 }"
+                                                    :aria-pressed="(activeSlide('project-4') === 4).toString()"
+                                                    @click.stop="setSlide('project-4', 4)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (4)/Shastra Home 04_View 05.jpg"
+                                                        alt="Courtyard Villa thumbnail 5"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </article>
+                                                    <article
+                                x-show="isProjectVisible('project-5')"
+                                x-transition.opacity.duration.250ms
+                                class="project-card"
+                                :class="{ 'project-card--expanded': isExpanded('project-5') }"
+                                role="button"
+                                tabindex="0"
+                                @click="if (! $event.target.closest('[data-gallery-control]')) { toggleProject('project-5'); }"
+                                @keydown.enter.self.prevent="toggleProject('project-5')"
+                                @keydown.space.self.prevent="toggleProject('project-5')"
+                                @keydown.arrow-right.self.prevent="if (isExpanded('project-5')) { nextSlide('project-5'); }"
+                                @keydown.arrow-left.self.prevent="if (isExpanded('project-5')) { previousSlide('project-5'); }"
+                                :aria-expanded="isExpanded('project-5').toString()"
+                                aria-controls="project-detail-project-5"
+                            >
+                                
+                                <div class="project-row" :class="{ 'project-row--expanded': isExpanded('project-5') }">
+                                    <div
+                                        class="project-row__preview"
+                                        @touchstart.passive="if (isExpanded('project-5')) { onTouchStart($event, 'project-5'); }"
+                                        @touchmove.passive="if (isExpanded('project-5')) { onTouchMove($event); }"
+                                        @touchend="if (isExpanded('project-5')) { onTouchEnd(); }"
+                                        @touchcancel="if (isExpanded('project-5')) { onTouchEnd(); }"
+                                    >
+                                        <img
+                                            :src="isExpanded('project-5') ? activeImage('project-5') : 'http://127.0.0.1:8082/assets/images/Projects/home (5)/Shastra Home 05_View 01.jpg'"
+                                            :alt="isExpanded('project-5') ? 'Modern Family Home image ' + activeSlideNumber('project-5') : 'Modern Family Home preview'"
+                                            class="h-full w-full object-cover"
+                                            loading="lazy"
+                                            decoding="async"
+                                        >
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-5')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-end p-4 sm:p-5"
+                                        >
+                                            <p class="project-gallery-counter" aria-live="polite">
+                                                <span x-text="activeSlideNumber('project-5')">1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-5')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,rgba(12,12,12,0)_0%,rgba(12,12,12,0.72)_100%)]"
+                                        ></div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-5')"
+                                            x-transition.opacity.duration.200ms
+                                            class="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 sm:p-5"
+                                        >
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="previousSlide('project-5')"
+                                                aria-label="Show previous image for Modern Family Home"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 19l-7-7 7-7" />
+                                                </svg>
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="nextSlide('project-5')"
+                                                aria-label="Show next image for Modern Family Home"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m9 5 7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="project-row__meta"
+                                        id="project-detail-project-5"
+                                    >
+                                        <div>
+                                            <h2 class="project-row__title">Modern Family Home</h2>
+                                        </div>
+
+                                        <div class="space-y-2">
+                                            <p class="project-row__label">Specifications</p>
+                                            <p class="project-row__detail">2,280 sq ft, 4 Bed, 3 Bath</p>
+                                            <p class="project-row__detail">Siem Reap</p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-5')"
+                                            x-transition.opacity.duration.200ms
+                                            class="space-y-2"
+                                        >
+                                            <p class="project-row__label">Concept</p>
+                                            <p class="project-row__detail project-row__concept">A practical family home shaped by efficient room planning, clean lines, and a restrained material palette.</p>
+                                        </div>
+
+                                        <div class="mt-auto flex items-center justify-between gap-4 pt-4">
+                                            <p
+                                                x-cloak
+                                                x-show="isExpanded('project-5')"
+                                                x-transition.opacity.duration.200ms
+                                                class="text-[0.74rem] uppercase tracking-[0.28em] text-[#9b9b9b]"
+                                            >
+                                                Swipe, arrows, and thumbnails
+                                            </p>
+
+                                            <span
+                                                class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#ff8800]/35 text-[#ff8800] transition-transform duration-200"
+                                                :class="{ 'rotate-180': isExpanded('project-5') }"
+                                                aria-hidden="true"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="m6 9 6 6 6-6" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        x-cloak
+                                        x-show="isExpanded('project-5')"
+                                        x-transition.opacity.duration.250ms
+                                        class="project-gallery-panel"
+                                    >
+                                        <div class="project-gallery-thumb-track">
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-5') === 0 }"
+                                                    :aria-pressed="(activeSlide('project-5') === 0).toString()"
+                                                    @click.stop="setSlide('project-5', 0)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (5)/Shastra Home 05_View 01.jpg"
+                                                        alt="Modern Family Home thumbnail 1"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-5') === 1 }"
+                                                    :aria-pressed="(activeSlide('project-5') === 1).toString()"
+                                                    @click.stop="setSlide('project-5', 1)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (5)/Shastra Home 05_View 02.jpg"
+                                                        alt="Modern Family Home thumbnail 2"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-5') === 2 }"
+                                                    :aria-pressed="(activeSlide('project-5') === 2).toString()"
+                                                    @click.stop="setSlide('project-5', 2)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (5)/Shastra Home 05_View 03.jpg"
+                                                        alt="Modern Family Home thumbnail 3"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-5') === 3 }"
+                                                    :aria-pressed="(activeSlide('project-5') === 3).toString()"
+                                                    @click.stop="setSlide('project-5', 3)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (5)/Shastra Home 05_View 04.jpg"
+                                                        alt="Modern Family Home thumbnail 4"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-5') === 4 }"
+                                                    :aria-pressed="(activeSlide('project-5') === 4).toString()"
+                                                    @click.stop="setSlide('project-5', 4)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (5)/Shastra Home 05_View 05.jpg"
+                                                        alt="Modern Family Home thumbnail 5"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </article>
+                                                    <article
+                                x-show="isProjectVisible('project-6')"
+                                x-transition.opacity.duration.250ms
+                                class="project-card"
+                                :class="{ 'project-card--expanded': isExpanded('project-6') }"
+                                role="button"
+                                tabindex="0"
+                                @click="if (! $event.target.closest('[data-gallery-control]')) { toggleProject('project-6'); }"
+                                @keydown.enter.self.prevent="toggleProject('project-6')"
+                                @keydown.space.self.prevent="toggleProject('project-6')"
+                                @keydown.arrow-right.self.prevent="if (isExpanded('project-6')) { nextSlide('project-6'); }"
+                                @keydown.arrow-left.self.prevent="if (isExpanded('project-6')) { previousSlide('project-6'); }"
+                                :aria-expanded="isExpanded('project-6').toString()"
+                                aria-controls="project-detail-project-6"
+                            >
+                                
+                                <div class="project-row" :class="{ 'project-row--expanded': isExpanded('project-6') }">
+                                    <div
+                                        class="project-row__preview"
+                                        @touchstart.passive="if (isExpanded('project-6')) { onTouchStart($event, 'project-6'); }"
+                                        @touchmove.passive="if (isExpanded('project-6')) { onTouchMove($event); }"
+                                        @touchend="if (isExpanded('project-6')) { onTouchEnd(); }"
+                                        @touchcancel="if (isExpanded('project-6')) { onTouchEnd(); }"
+                                    >
+                                        <img
+                                            :src="isExpanded('project-6') ? activeImage('project-6') : 'http://127.0.0.1:8082/assets/images/Projects/home (6)/Shastra Home 06_View 01.jpg'"
+                                            :alt="isExpanded('project-6') ? 'Skyline Pavilion image ' + activeSlideNumber('project-6') : 'Skyline Pavilion preview'"
+                                            class="h-full w-full object-cover"
+                                            loading="lazy"
+                                            decoding="async"
+                                        >
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-6')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-end p-4 sm:p-5"
+                                        >
+                                            <p class="project-gallery-counter" aria-live="polite">
+                                                <span x-text="activeSlideNumber('project-6')">1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-6')"
+                                            x-transition.opacity.duration.200ms
+                                            class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,rgba(12,12,12,0)_0%,rgba(12,12,12,0.72)_100%)]"
+                                        ></div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-6')"
+                                            x-transition.opacity.duration.200ms
+                                            class="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 sm:p-5"
+                                        >
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="previousSlide('project-6')"
+                                                aria-label="Show previous image for Skyline Pavilion"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 19l-7-7 7-7" />
+                                                </svg>
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="project-gallery-control"
+                                                data-gallery-control
+                                                @click.stop="nextSlide('project-6')"
+                                                aria-label="Show next image for Skyline Pavilion"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m9 5 7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="project-row__meta"
+                                        id="project-detail-project-6"
+                                    >
+                                        <div>
+                                            <h2 class="project-row__title">Skyline Pavilion</h2>
+                                        </div>
+
+                                        <div class="space-y-2">
+                                            <p class="project-row__label">Specifications</p>
+                                            <p class="project-row__detail">2,340 sq ft, 4 Bed, 3 Bath</p>
+                                            <p class="project-row__detail">Phnom Penh</p>
+                                        </div>
+
+                                        <div
+                                            x-cloak
+                                            x-show="isExpanded('project-6')"
+                                            x-transition.opacity.duration.200ms
+                                            class="space-y-2"
+                                        >
+                                            <p class="project-row__label">Concept</p>
+                                            <p class="project-row__detail project-row__concept">This featured placeholder project stands in for the expanded portfolio state, showing a fuller story and the complete image set.</p>
+                                        </div>
+
+                                        <div class="mt-auto flex items-center justify-between gap-4 pt-4">
+                                            <p
+                                                x-cloak
+                                                x-show="isExpanded('project-6')"
+                                                x-transition.opacity.duration.200ms
+                                                class="text-[0.74rem] uppercase tracking-[0.28em] text-[#9b9b9b]"
+                                            >
+                                                Swipe, arrows, and thumbnails
+                                            </p>
+
+                                            <span
+                                                class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#ff8800]/35 text-[#ff8800] transition-transform duration-200"
+                                                :class="{ 'rotate-180': isExpanded('project-6') }"
+                                                aria-hidden="true"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="m6 9 6 6 6-6" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        x-cloak
+                                        x-show="isExpanded('project-6')"
+                                        x-transition.opacity.duration.250ms
+                                        class="project-gallery-panel"
+                                    >
+                                        <div class="project-gallery-thumb-track">
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-6') === 0 }"
+                                                    :aria-pressed="(activeSlide('project-6') === 0).toString()"
+                                                    @click.stop="setSlide('project-6', 0)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (6)/Shastra Home 06_View 01.jpg"
+                                                        alt="Skyline Pavilion thumbnail 1"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-6') === 1 }"
+                                                    :aria-pressed="(activeSlide('project-6') === 1).toString()"
+                                                    @click.stop="setSlide('project-6', 1)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (6)/Shastra Home 06_View 02.jpg"
+                                                        alt="Skyline Pavilion thumbnail 2"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-6') === 2 }"
+                                                    :aria-pressed="(activeSlide('project-6') === 2).toString()"
+                                                    @click.stop="setSlide('project-6', 2)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (6)/Shastra Home 06_View 03.jpg"
+                                                        alt="Skyline Pavilion thumbnail 3"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-6') === 3 }"
+                                                    :aria-pressed="(activeSlide('project-6') === 3).toString()"
+                                                    @click.stop="setSlide('project-6', 3)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (6)/Shastra Home 06_View 04.jpg"
+                                                        alt="Skyline Pavilion thumbnail 4"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                            <button
+                                                    type="button"
+                                                    class="project-gallery-thumb"
+                                                    data-gallery-control
+                                                    :class="{ 'project-gallery-thumb--active': activeSlide('project-6') === 4 }"
+                                                    :aria-pressed="(activeSlide('project-6') === 4).toString()"
+                                                    @click.stop="setSlide('project-6', 4)"
+                                                >
+                                                    <img
+                                                        src="http://127.0.0.1:8082/assets/images/Projects/home (6)/Shastra Home 06_View 05.jpg"
+                                                        alt="Skyline Pavilion thumbnail 5"
+                                                        class="h-full w-full object-cover"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    >
+                                                </button>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </article>
+                                            </div>
+                </div>
+            </div>
+        </section>
+    </div>
+        </main>
+
+        
+        <footer id="contact" class="site-footer">
+    
+    <section class="site-footer-cta">
+        <div class="site-footer-shell relative overflow-hidden">
+                            <img
+                    src="http://127.0.0.1:8082/assets/images/Footer/Footer-bg-1.png"
+                    alt=""
+                    class="absolute inset-0 h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                >
+            
+            <div class="site-footer-cta__overlay"></div>
+
+            <div class="site-footer-cta__content">
+                <h2 class="site-footer-cta__headline">
+                    Start Your Dream Project Today
+                    <span class="text-[#ff9808]">.</span>
+                </h2>
+
+                                    <a href="http://127.0.0.1:8082/contact" class="site-footer-cta__button">
+                        Contact us
+                    </a>
+                            </div>
+        </div>
+    </section>
+
+    
+    <section class="site-footer-team">
+        <div class="site-footer-shell">
+            <div class="site-footer-team__grid">
+                <div class="site-footer-team__visual">
+                    <div class="site-footer-team__label">
+                                                    <p class="site-footer-team__eyebrow">OUR TEAM</p>
+                        
+                                                    <p class="site-footer-team__caption">The people behind</p>
+                                            </div>
+
+                                            <img
+                            src="http://127.0.0.1:8082/assets/images/Footer/Teams.png"
+                            alt="Shastra Home team"
+                            class="site-footer-team__image"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                                    </div>
+
+                <div class="site-footer-team__copy">
+                                            <span>We are ready to turn your vision into reality.</span>
+                                            <span>Reach out for a consultation.</span>
+                                    </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="site-footer-logo-strip" aria-label="Future partner logos">
+        <div class="site-footer-shell">
+            <div class="site-footer-logo-grid">
+                                    <div class="site-footer-logo-cell">
+                        <div class="site-footer-logo-placeholder" aria-hidden="true"></div>
+                                                    <span class="sr-only">Studio partner</span>
+                                            </div>
+                                    <div class="site-footer-logo-cell">
+                        <div class="site-footer-logo-placeholder" aria-hidden="true"></div>
+                                                    <span class="sr-only">Project partner</span>
+                                            </div>
+                                    <div class="site-footer-logo-cell">
+                        <div class="site-footer-logo-placeholder" aria-hidden="true"></div>
+                                                    <span class="sr-only">Construction partner</span>
+                                            </div>
+                                    <div class="site-footer-logo-cell">
+                        <div class="site-footer-logo-placeholder" aria-hidden="true"></div>
+                                                    <span class="sr-only">Design partner</span>
+                                            </div>
+                                    <div class="site-footer-logo-cell">
+                        <div class="site-footer-logo-placeholder" aria-hidden="true"></div>
+                                                    <span class="sr-only">Supplier partner</span>
+                                            </div>
+                                    <div class="site-footer-logo-cell">
+                        <div class="site-footer-logo-placeholder" aria-hidden="true"></div>
+                                                    <span class="sr-only">Client partner</span>
+                                            </div>
+                            </div>
+        </div>
+    </section>
+
+    
+    <section class="site-footer-meta">
+        <div class="site-footer-shell">
+            <div class="site-footer-panel">
+                <div class="site-footer-panel__grid">
+                    <div class="space-y-8">
+                        <div class="space-y-6">
+                            <h2 class="site-footer-panel__brand">Shastra Home</h2>
+
+                            <div class="site-footer-panel__body space-y-7">
+                                                                    <p>Shastra Home offers professional design and construction services for a wide range of building projects, supported by years of experience and a dedicated team of skilled professionals.</p>
+                                                                    <p>We take pride in earning the trust of our clients through quality craftsmanship, reliability, and attention to detail.</p>
+                                                            </div>
+                        </div>
+                    </div>
+
+                    <div class="site-footer-panel__column">
+                        <h3 class="site-footer-panel__heading">Company</h3>
+
+                        <nav class="site-footer-link-list" aria-label="Footer company navigation">
+                                                            
+                                                                    <a href="http://127.0.0.1:8082">Home</a>
+                                                                                            
+                                                                    <a href="http://127.0.0.1:8082/projects">Projects</a>
+                                                                                            
+                                                                    <a href="http://127.0.0.1:8082/services">Services</a>
+                                                                                            
+                                                                    <a href="http://127.0.0.1:8082/templates">Templates</a>
+                                                                                            
+                                                                    <a href="http://127.0.0.1:8082/about-us">About Us</a>
+                                                                                            
+                                                                    <a href="http://127.0.0.1:8082/contact">Contact</a>
+                                                                                    </nav>
+                    </div>
+
+                    <div class="site-footer-panel__column">
+                        <h3 class="site-footer-panel__heading">Contact</h3>
+
+                        <div class="site-footer-contact-list">
+                            <div>
+                                                                    <p>123 Construction Ave, Bangalore,</p>
+                                                                    <p>Lorem, Phnom Penh, Cambodia</p>
+                                                            </div>
+
+                            <div class="space-y-1">
+                                                                    
+                                    <a href="tel:+85598660266" class="block">
+                                        +855 98 660 266
+                                    </a>
+                                                                    
+                                    <a href="tel:+85560660266" class="block">
+                                        +855 60 660 266
+                                    </a>
+                                                            </div>
+
+                                                            <a href="mailto:info@shastraconstruction.com" class="site-footer-contact-email">
+                                    info@shastraconstruction.com
+                                </a>
+                                                    </div>
+
+                        <div class="space-y-5">
+                            <p class="site-footer-social-title">Follow us on</p>
+
+                            <div class="site-footer-social-list">
+                                                                    
+                                                                            <span class="site-footer-social-link" role="img" aria-label="Facebook">
+                                                                                            <img
+                                                    src="http://127.0.0.1:8082/assets/images/Social media/FB.png?v=1774020517"
+                                                    alt=""
+                                                    class="site-footer-social-asset"
+                                                    width="134"
+                                                    height="134"
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                >
+                                                                                    </span>
+                                                                                                        
+                                                                            <span class="site-footer-social-link" role="img" aria-label="TikTok">
+                                                                                            <img
+                                                    src="http://127.0.0.1:8082/assets/images/Social media/TT.png?v=1774012642"
+                                                    alt=""
+                                                    class="site-footer-social-asset"
+                                                    width="134"
+                                                    height="134"
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                >
+                                                                                    </span>
+                                                                                                        
+                                                                            <span class="site-footer-social-link" role="img" aria-label="Instagram">
+                                                                                            <img
+                                                    src="http://127.0.0.1:8082/assets/images/Social media/IG.png?v=1774012642"
+                                                    alt=""
+                                                    class="site-footer-social-asset"
+                                                    width="134"
+                                                    height="134"
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                >
+                                                                                    </span>
+                                                                                                        
+                                                                            <span class="site-footer-social-link" role="img" aria-label="Telegram">
+                                                                                            <img
+                                                    src="http://127.0.0.1:8082/assets/images/Social media/TG.png?v=1774012642"
+                                                    alt=""
+                                                    class="site-footer-social-asset"
+                                                    width="134"
+                                                    height="134"
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                >
+                                                                                    </span>
+                                                                                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="site-footer-legal">
+                <p>Copyright 2023 Shastra Home. All rights reserved.</p>
+
+                <div class="site-footer-legal__links">
+                                                                        <span class="site-footer-legal__placeholder">Privacy Policy</span>
+                                                                                                <span class="site-footer-legal__placeholder">Term of Service</span>
+                                                            </div>
+            </div>
+        </div>
+    </section>
+</footer>
+    </body>
+</html>
+

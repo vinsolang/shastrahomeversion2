@@ -10,7 +10,6 @@
     $team = $footer['team'] ?? [];
     $companyLinks = $footer['company_links'] ?? $navigation;
     $footerContact = $footer['contact'] ?? $contact;
-    $logoPlaceholders = data_get($footer, 'logo_strip.items', []);
     $legalLinks = data_get($footer, 'legal.links', []);
     $socialIconImages = [
         'facebook' => 'assets/images/Social media/FB.png',
@@ -28,6 +27,8 @@
     $ctaHref = filled($ctaRouteName) && \Illuminate\Support\Facades\Route::has($ctaRouteName)
         ? route($ctaRouteName)
         : '#';
+    $footerContactMapUrl = $footerContact['map_url'] ?? null;
+    $footerContactMapLabel = $footerContact['map_label'] ?? 'Open in Google Maps';
 @endphp
 
 <footer id="contact" class="site-footer">
@@ -80,9 +81,20 @@
                         @endif
                     </div>
 
-                    @if (filled($team['image'] ?? null))
+                 @php
+                        $teamImage = $team['image'] ?? null;
+
+                        if (filled($teamImage)) {
+                            $isPublicAsset = str_starts_with($teamImage, 'assets/');
+                            $imageUrl = $isPublicAsset
+                                ? asset($teamImage)
+                                : route('public.media.show', ['path' => $teamImage]);
+                        }
+                    @endphp
+
+                    @if (!empty($imageUrl))
                         <img
-                            src="{{ asset($team['image']) }}"
+                            src="{{ $imageUrl }}"
                             alt="{{ $brand['name'] }} team"
                             class="site-footer-team__image"
                             loading="lazy"
@@ -98,22 +110,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    {{-- Logo strip --}}
-    <section class="site-footer-logo-strip" aria-label="Future partner logos">
-        <!-- <div class="site-footer-shell">
-            <div class="site-footer-logo-grid" data-aos="fade-up" data-aos-duration="720">
-                @foreach ($logoPlaceholders as $item)
-                    <div class="site-footer-logo-cell">
-                        <div class="site-footer-logo-placeholder" aria-hidden="true"></div>
-                        @if (filled($item['label'] ?? null))
-                            <span class="sr-only">{{ $item['label'] }}</span>
-                        @endif
-                    </div>
-                @endforeach
-            </div>
-        </div> -->
     </section>
 
     {{-- Footer meta --}}
@@ -158,11 +154,26 @@
                         <h3 class="site-footer-panel__heading">Contact</h3>
 
                         <div class="site-footer-contact-list">
-                            <div>
-                                @foreach ($footerContact['address_lines'] ?? [] as $line)
-                                    <p>{{ $line }}</p>
-                                @endforeach
-                            </div>
+                            @if (($footerContact['address_lines'] ?? []) !== [])
+                                @if (filled($footerContactMapUrl))
+                                    <a
+                                        href="{{ $footerContactMapUrl }}"
+                                        class="block space-y-1 transition hover:text-white"
+                                        target="_blank"
+                                        rel="noreferrer noopener"
+                                    >
+                                        @foreach ($footerContact['address_lines'] ?? [] as $line)
+                                            <p>{{ $line }}</p>
+                                        @endforeach
+                                    </a>
+                                @else
+                                    <div>
+                                        @foreach ($footerContact['address_lines'] ?? [] as $line)
+                                            <p>{{ $line }}</p>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            @endif
 
                             <div class="space-y-1">
                                 @foreach ($footerContact['phones'] ?? [] as $phone)
@@ -179,6 +190,17 @@
                             @if (filled($footerContact['email'] ?? null))
                                 <a href="mailto:{{ $footerContact['email'] }}" class="site-footer-contact-email">
                                     {{ $footerContact['email'] }}
+                                </a>
+                            @endif
+
+                            @if (filled($footerContactMapUrl))
+                                <a
+                                    href="{{ $footerContactMapUrl }}"
+                                    class="site-footer-contact-email"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    {{ $footerContactMapLabel }}
                                 </a>
                             @endif
                         </div>

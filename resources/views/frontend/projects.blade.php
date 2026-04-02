@@ -7,6 +7,7 @@
     <div class="bg-white text-[#1f1f1f]">
         {{-- Portfolio --}}
         @include('frontend.partials.portfolio-section', [
+            
             'portfolio' => $page['portfolio'] ?? [],
             'isStandalone' => true,
         ])

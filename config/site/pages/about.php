@@ -63,10 +63,28 @@ return [
         ],
     ],
     'founder' => [
-        'image' => 'assets/images/About us/professional-asian-businessman-dark-suit 1.png',
-        'name' => 'Lorem Sample Name',
-        'role' => 'Founder',
-        'statement' => 'Modern Cambodian living starts with a forward-thinking mindset, embracing change and elevating living standards through quality, responsibility, and purpose. At SHASTRA Home, we believe true progress is driven by well-defined strategic planning, accountability, and disciplined execution. Our focus is on creating homes that enhance everyday living while remaining dependable for generations to come.',
+        'image' => 'assets/images/About us/Founder.png',
+        'image_alt' => 'SHASTRA Home CEO portrait',
+        'name' => '',
+        'role' => 'Chief Executive Officer',
+        'statements' => [
+            [
+                'lang' => 'en',
+                'text' => 'Modern Cambodian living begins with the willingness to think differently, embrace changes, and raise living standards through quality and responsibility.',
+            ],
+            [
+                'lang' => 'en',
+                'text' => 'At SHASTRA Home, we believe progress comes from well defined strategic planning, responsibility and disciplined executions. We focus on building homes that support everyday living and remain reliable for the future.',
+            ],
+            [
+                'lang' => 'km',
+                'text' => 'ការរស់នៅខ្មែរសម័យថ្មី ចាប់ផ្តើមពីគំនិត ចង់ផ្លាស់ប្តូរ និងលើកកម្ពស់បទដ្ឋាននៃការរស់នៅ ដោយផ្អែកលើគុណភាព និងទំនួលខុសត្រូវ។',
+            ],
+            [
+                'lang' => 'km',
+                'text' => 'នៅ លំនៅឋាន ​សាស្រ្ដា​ យើងជឿជាក់ថា ការរីកចម្រើនកើតចេញពីការរៀបចំផែនការច្បាស់លាស់ ការសាងសង់ដោយទំនួលខុសត្រូវ ផ្អែកលើបទពិសោធន៍ អនុវត្តដោយវិន័យ ដើម្បីបង្កើតផ្ទះដ៏កក់ក្ដៅ ​សម្រាប់ការប្រើប្រាស់ប្រចាំថ្ងៃ និងធានាគុណភាពសម្រាប់អនាគត។',
+            ],
+        ],
     ],
     'difference' => $shared['difference'],
     'media' => $shared['media'],

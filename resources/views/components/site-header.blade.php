@@ -140,9 +140,22 @@
             <p class="text-[18px] font-semibold text-[#FF8800]">Contact</p>
             <div class="mt-4 text-[14px] leading-7 text-white/82">
                 <div>
-                    @foreach ($contact['address_lines'] ?? [] as $line)
-                        <p>{{ $line }}</p>
-                    @endforeach
+                    @if (filled($contact['map_url'] ?? null))
+                        <a
+                            href="{{ $contact['map_url'] }}"
+                            class="block space-y-1 transition hover:text-white"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            @foreach ($contact['address_lines'] ?? [] as $line)
+                                <p>{{ $line }}</p>
+                            @endforeach
+                        </a>
+                    @else
+                        @foreach ($contact['address_lines'] ?? [] as $line)
+                            <p>{{ $line }}</p>
+                        @endforeach
+                    @endif
                 </div>
 
                 <div class="mt-5">
@@ -160,6 +173,17 @@
                 <a href="mailto:{{ $contact['email'] }}" class="mt-5 block underline underline-offset-4">
                     {{ $contact['email'] }}
                 </a>
+
+                @if (filled($contact['map_url'] ?? null))
+                    <a
+                        href="{{ $contact['map_url'] }}"
+                        class="mt-5 inline-block underline underline-offset-4"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        {{ $contact['map_label'] ?? 'Open in Google Maps' }}
+                    </a>
+                @endif
             </div>
 
             <div class="mt-10">

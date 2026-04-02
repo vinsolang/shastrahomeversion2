@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Shastra CMS Login</title>
+<<<<<<< ours
+=======
+        <link rel="icon" type="image/png" href="{{ asset('assets/logo/Logo_not_text.png') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/logo/Logo_not_text.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('assets/logo/Logo_not_text.png') }}">
+>>>>>>> theirs
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>

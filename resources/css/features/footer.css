@@ -164,32 +164,6 @@
         white-space: nowrap;
     }
 
-    .site-footer-logo-strip {
-        background-color: #ffffff;
-        padding: clamp(2.75rem, 5vw, 4.5rem) 0 clamp(2.75rem, 6vw, 5rem);
-    }
-
-    .site-footer-logo-grid {
-        display: grid;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        gap: clamp(1rem, 2.1vw, 2.5rem);
-        padding-inline: clamp(1.5rem, 8vw, 18rem);
-    }
-
-    .site-footer-logo-cell {
-        display: flex;
-        min-height: 7.5rem;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .site-footer-logo-placeholder {
-        height: clamp(4rem, 4.2vw, 4.75rem);
-        width: clamp(4rem, 4.2vw, 4.75rem);
-        border-radius: 1.35rem;
-        background-color: var(--footer-placeholder);
-    }
-
     .site-footer-meta {
         background:
             linear-gradient(
@@ -426,12 +400,6 @@
             white-space: normal;
         }
 
-        .site-footer-logo-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            row-gap: 1.5rem;
-            padding-inline: clamp(1.25rem, 12vw, 6rem);
-        }
-
         .site-footer-panel__grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -508,12 +476,6 @@
 
         .site-footer-team__copy span {
             white-space: normal;
-        }
-
-        .site-footer-logo-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1rem;
-            padding-inline: 1rem;
         }
 
         .site-footer-meta {
