@@ -70,6 +70,12 @@
                     >
                         Sign in
                     </button>
+                    {{-- <button
+                        type="submit"
+                        class="inline-flex w-full items-center justify-center rounded-full bg-amber-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-amber-400"
+                    >
+                        Sign in
+                    </button> --}}
                 </form>
             </section>
         </main>
