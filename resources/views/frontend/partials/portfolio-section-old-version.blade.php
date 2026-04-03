@@ -73,7 +73,7 @@
                 <div class="projects-topbar" data-aos="fade-up">
                     <div class="projects-topbar__heading" aria-hidden="true">
                         <span>{{ $heading['eyebrow'] ?? 'OUR' }}</span>
-                        <span>{{ $heading['title'] ?? 'PORTFOLIOS' }}</span>
+                        <span>{{ $heading['title'] ?? 'PORTFOLIO' }}</span>
                     </div>
 
                     {{-- Tabs --}}
@@ -97,7 +97,7 @@
                 <div class="projects-topbar-embedded" data-aos="fade-up">
                     <div class="projects-topbar-embedded__heading" aria-hidden="true">
                         <span>{{ $heading['eyebrow'] ?? 'OUR' }}</span>
-                        <span>{{ $heading['title'] ?? 'PORTFOLIOS' }}</span>
+                        <span>{{ $heading['title'] ?? 'PORTFOLIO' }}</span>
                     </div>
 
                     <div class="projects-topbar-embedded__tabs">

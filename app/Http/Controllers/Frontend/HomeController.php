@@ -60,7 +60,7 @@ final class HomeController extends Controller
         })->values()->all();
 
         $portfolioData = [
-            'heading'  => ['eyebrow' => 'OUR', 'title' => 'PORTFOLIO'],
+            'heading'  => ['eyebrow' => 'OUR', 'title' => 'PORTFOLIOS'],
             'tabs'     => $tabs,
             'projects' => $projects,
         ];

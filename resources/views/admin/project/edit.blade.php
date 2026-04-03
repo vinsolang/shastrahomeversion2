@@ -53,7 +53,6 @@
                         rows="4"
                         id="desc"
                         class="w-full border p-2 rounded text-sm"
-                        required
                     >{!! old('desc', $project_backend->desc) !!}</textarea>
                     <x-input-error class="mt-2" :messages="$errors->get('desc')" />
                 </div>
@@ -65,7 +64,6 @@
                         rows="4"
                         id="specifications"
                         class="w-full border p-2 rounded text-sm"
-                        required
                     >{!! old('specifications', $project_backend->specifications) !!}</textarea>
                     <x-input-error class="mt-2" :messages="$errors->get('specifications')" />
                 </div>
@@ -132,7 +130,7 @@
             <div class="flex justify-between">
                 <a href="{{ route('project_backend.index') }}" class="px-4 py-1 border rounded">Back</a>
 
-                <button class="bg-[#613bf1] text-white px-6 py-1 rounded">
+                <button type="submit" class="bg-[#613bf1] text-white px-6 py-1 rounded">
                     Update
                 </button>
             </div>

@@ -225,7 +225,7 @@
                                         >
                                             @if ($socialIconPath)
                                                 <img
-                                                    src="{{ $versionedAsset($socialIconPath) }}"
+                                                    src="{{ asset($socialIconPath) }}"
                                                     alt=""
                                                     class="site-footer-social-asset"
                                                     width="134"
@@ -239,7 +239,7 @@
                                         <span class="site-footer-social-link" role="img" aria-label="{{ $social['label'] }}">
                                             @if ($socialIconPath)
                                                 <img
-                                                    src="{{ $versionedAsset($socialIconPath) }}"
+                                                    src="{{ asset($socialIconPath) }}"
                                                     alt=""
                                                     class="site-footer-social-asset"
                                                     width="134"
