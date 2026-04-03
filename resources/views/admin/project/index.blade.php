@@ -118,7 +118,7 @@
                                         @if ($firstImage)
                                             <div class="relative">
                                                 <div class="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white p-1 shadow-sm">
-                                                    <img src="{{ route('public.media.show', ['path' => $firstImage]) }}"
+                                                    <img src="{{ asset('storage/' . $firstImage) }}"
                                                         class="h-full w-full rounded-[12px] object-cover" alt="Project image">
                                                 </div>
                                                 @if ($imageCount > 1)

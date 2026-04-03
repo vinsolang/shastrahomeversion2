@@ -76,7 +76,7 @@
                     @if ($existingImages->isNotEmpty())
                         @foreach ($existingImages as $img)
                             <div class="relative w-24 h-24 border rounded overflow-hidden">
-                                <img src="{{ route('public.media.show', ['path' => $img]) }}" class="w-full h-full object-cover">
+                                <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover">
 
                                 <button
                                     type="button"

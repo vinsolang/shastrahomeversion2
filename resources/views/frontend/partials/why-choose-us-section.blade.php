@@ -7,7 +7,7 @@
 <section class="overflow-hidden bg-white">
     <div class="mx-auto max-w-[1904px]">
         <div
-            class="relative mx-auto h-[30rem] min-h-[30rem] w-full bg-white md:h-[36rem] md:min-h-[36rem] xl:h-[692px] xl:min-h-[692px]">
+            class="relative mx-auto min-h-[42rem] w-full bg-white md:h-[36rem] md:min-h-[36rem] xl:h-[692px] xl:min-h-[692px]">
             <div class="absolute inset-0 overflow-hidden md:inset-x-0 md:top-0 md:bottom-0 xl:top-0 xl:right-50 xl:left-0 xl:h-[637px]"
                 data-aos="fade-right">
                 <img src="{{ asset('assets/images/Services/Services-img.png') }}" alt=""
@@ -48,7 +48,7 @@
                         </p>
 
                         <h2
-                            class="mt-8 font-display text-[clamp(2.6rem,3.65vw,4.25rem)] leading-[0.98] font-light tracking-[-0.04em] text-white">
+                            class="mt-8 font-display text-2xl lg:text-[clamp(2.6rem,3.65vw,4.25rem)] leading-[0.98] font-light tracking-[-0.04em] text-white">
                             {{ $difference['title'] ?? '' }}
                         </h2>
 
