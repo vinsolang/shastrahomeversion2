@@ -268,10 +268,10 @@
                             :class="statsVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'">
                             {{-- x-text="stats[{{ $loop->index }}].display" --}}
                            <p
-    class="font-display text-[2.35rem] leading-none font-semibold text-[#ff8800]"
-    x-text="stats[{{ $loop->index }}].display"
-    x-init="$el.innerText = '{{ number_format($item['value']) }}+'">
-</p>
+                                class="font-display text-[2.35rem] leading-none font-semibold text-[#ff8800]"
+                                x-text="stats[{{ $loop->index }}].display"
+                                x-init="$el.innerText = '{{ number_format($item['value']) }}+'">
+                            </p>
                             <p class="mt-2 text-center text-[0.95rem] leading-none text-white/72 sm:text-base">
                                 {{ $item['label'] ?? '' }}</p>
                         </div>
@@ -306,3 +306,4 @@
         'isStandalone' => false,
     ])
 @endsection
+

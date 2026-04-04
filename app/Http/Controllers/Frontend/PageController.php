@@ -128,9 +128,15 @@ final class PageController extends Controller
 
     // Map the paths once here
     $gallery = collect($images)
-        ->map(fn(string $path): string => 'storage/' . $path)
-        ->values()
-        ->all();
+    ->map(function (string $path, int $index) use ($product) {
+        return [
+            'src'  => asset('storage/' . $path),
+            'type' => 'image',
+            'alt'  => $product->name . ' image ' . ($index + 1),
+        ];
+    })
+    ->values()
+    ->all();
 
     return [
         'id'            => $product->id,
@@ -141,7 +147,7 @@ final class PageController extends Controller
         'concept'       => strip_tags($product->desc ?? ''),
         'location'      => $product->location ?? '',
         // Use the first item from our already-prefixed gallery array
-        'cover_image'   => $gallery[0] ?? '', 
+        'cover_image' => $gallery[0]['src'] ?? '', 
         'gallery'       => $gallery,
     ];
 })->values()->all();

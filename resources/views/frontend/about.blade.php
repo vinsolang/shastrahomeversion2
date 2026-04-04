@@ -308,8 +308,9 @@
 
         {{-- Difference --}}
         @include('frontend.partials.why-choose-us-section', [
-            'difference' => $page['difference'] ?? [],
-            'variant' => 'about',
+            // 'difference' => $page['difference'] ?? [],
+             'difference' => $differenceData,
+            'variant' => 'services', 
         ])
 
         {{-- Media --}}

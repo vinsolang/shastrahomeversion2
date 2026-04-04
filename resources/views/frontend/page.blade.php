@@ -73,6 +73,9 @@
         @include('frontend.partials.portfolio-section', [
             'portfolio' => $portfolio,
             'isStandalone' => false,
+
+            //   'portfolio' => $page['portfolio'] ?? [],
+            // 'isStandalone' => true,
         ])
     @endif
 @endsection
