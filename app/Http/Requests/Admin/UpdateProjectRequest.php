@@ -22,7 +22,7 @@ final class UpdateProjectRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'desc' => ['nullable', 'string'],
-            'location' => ['required', 'string'],
+            'location' => ['nullable', 'string'],
             'specifications' => ['nullable', 'string'],
             'category_id' => ['required', 'string', 'exists:categories,id'],
             'old_images' => ['nullable', 'array'],

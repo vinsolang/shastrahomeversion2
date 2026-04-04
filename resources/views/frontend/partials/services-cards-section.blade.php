@@ -1,5 +1,11 @@
 @php
     $cards = $cards ?? [];
+   $iconcards = [
+    ['icon' => '1.png'],
+    ['icon' => '2.png'],
+    ['icon' => '3.png'],
+    ['icon' => '4.png'],
+];
 @endphp
 
 {{-- Services --}}
@@ -21,7 +27,7 @@
                             <div class="flex flex-col h-auto">
 
                                 {{-- ICON --}}
-                                @if (filled($card['icon'] ?? null))
+                                {{-- @if (filled($card['icon'] ?? null))
                                     <img src="{{ Str::startsWith($card['icon'], ['http', '/']) ? $card['icon'] : asset($card['icon']) }}"
                                         alt="" @class([
                                             'mt-3 h-[2.15rem] w-auto max-w-[2.15rem] object-contain transition-[filter] duration-200 group-hover:[filter:brightness(0)_saturate(100%)] 
@@ -31,7 +37,11 @@
                                             '[filter:brightness(0)_saturate(100%)_invert(57%)_sepia(85%)_saturate(2782%)_hue-rotate(4deg)_brightness(103%)_contrast(103%)]'
                                             => ($card['icon_tone'] ?? null) === 'dark-source',
                                         ]) loading="lazy" decoding="async">
-                                @endif
+                                @endif --}}
+                                 <img src="{{ asset('assets/icon/icon/' . $iconcards[$loop->index]['icon']) }}"
+                                        alt="" class="mt-3 h-[2.15rem] w-auto max-w-[2.15rem] object-contain transition-[filter] duration-200 group-hover:[filter:brightness(0)_saturate(100%)] 
+                                                                                        sm:mt-[1.2rem] sm:h-[2.375rem] sm:max-w-[2.375rem] 
+                                                                                        xl:mt-[14px] xl:h-[30px] xl:max-w-[34px]">
 
                                 {{-- TITLE --}}
                                 <h2 class="mt-2 w-full xl:max-w-[15rem] text-lg h-auto md:h-16 leading-[1.05] font-normal tracking-[-0.04em] 

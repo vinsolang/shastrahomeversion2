@@ -1,3 +1,4 @@
+{{-- Contact Page  --}}
 @extends('layouts.marketing')
 
 @section('title', 'Shastra | ' . $page['title'])

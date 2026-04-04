@@ -1,3 +1,4 @@
+{{-- About Page --}}
 @extends('layouts.marketing')
 
 @section('title', 'Shastra | ' . $page['title'])
@@ -90,7 +91,8 @@
                                 {{-- Action --}}
                                 <div class="mt-5 sm:mt-6 lg:mt-9">
                                     @if ($downloadHref)
-                                        <a href="{{ $downloadHref }}" target="_blank" download="Shastra_Home_Company_Profile.pdf"
+                                    {{-- {{ $downloadHref }} --}}
+                                        <a href="/abouts/pdfs" target="_blank" download="VGOkoYizAFJwjkzU5vEUpbF0nCCxn2GkpBNHDuCD.pdf"
                                             class="inline-flex min-h-[3rem] w-full items-center justify-center gap-3 bg-[#1f1f1f] px-4 text-[0.86rem] font-semibold text-[#ff9b0f] transition hover:bg-black sm:min-h-[3.35rem] sm:w-auto sm:px-6 sm:text-[0.92rem] lg:min-h-[4.1rem] lg:px-8 lg:text-[1rem]">
                                             @if (filled($downloadIcon))
                                                 <img src="{{ asset($downloadIcon) }}" alt=""
@@ -308,23 +310,20 @@
 
         {{-- Difference --}}
         @include('frontend.partials.why-choose-us-section', [
-            // 'difference' => $page['difference'] ?? [],
-             'difference' => $differenceData,
-            'variant' => 'services', 
+            'difference' => $differenceData,
+            'variant' => 'services',
         ])
 
         {{-- Media --}}
         @include('frontend.partials.media-section', [
-            // 'media' => $page['media'] ?? [],
-            // 'sectionId' => 'about-media',
-             'media' => $media,
+            'media' => $media,
         ])
 
-        {{-- Portfolio --}}
+        {{-- Portfolio — rendered identically to the standalone Projects page --}}
         @include('frontend.partials.portfolio-section', [
-            'portfolio' => data_get($site, 'pages.projects.portfolio', []),
-            'isStandalone' => false,
+            'portfolio'    => data_get($site, 'pages.projects.portfolio', []),
+            'isStandalone' => true,
         ])
     </div>
-    
+
 @endsection

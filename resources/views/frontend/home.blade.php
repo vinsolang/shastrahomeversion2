@@ -1,3 +1,4 @@
+{{-- Home Page --}}
 @extends('layouts.marketing')
 
 @section('title', 'Shastra')
@@ -194,7 +195,6 @@
 
                             <h1
                                 class="mt-3 max-w-[18rem] font-display text-[1.95rem] leading-none tracking-normal font-[800] text-white sm:mt-4 sm:max-w-[34rem] sm:text-[3.1rem] lg:mt-4 lg:max-w-[40rem] lg:text-[4.6rem]">
-                                <!-- <span>{{ $site['hero']['title'] }}</span> -->
                                 <span>{{ $getHomePage->hero_title }}</span>
                                 @if ($heroTitleAccent)
                                     <span class="text-[#ff8800]">{{ $heroTitleAccent }}</span>
@@ -203,7 +203,6 @@
 
                             <p
                                 class="mt-3 ml-2 max-w-[16.75rem] text-[0.8rem] leading-[1.18] font-light tracking-normal text-white sm:mt-3.5 sm:ml-0 sm:max-w-[29rem] sm:text-[0.98rem] md:text-[1.08rem] lg:mt-3 lg:max-w-[27rem] lg:text-[1.2rem] lg:leading-[1.08]">
-                                <!-- {{ $site['hero']['description'] }} -->
                                 {{ $getHomePage->hero_description }}
                             </p>
 
@@ -266,7 +265,6 @@
                         <div class="flex min-h-[5.5rem] flex-col items-center justify-start transition duration-700 ease-out will-change-transform"
                             style="transition-delay: {{ 80 + $loop->index * 90 }}ms;"
                             :class="statsVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'">
-                            {{-- x-text="stats[{{ $loop->index }}].display" --}}
                            <p
                                 class="font-display text-[2.35rem] leading-none font-semibold text-[#ff8800]"
                                 x-text="stats[{{ $loop->index }}].display"
@@ -288,22 +286,18 @@
 
     {{-- Difference --}}
     @include('frontend.partials.why-choose-us-section', [
-        // 'difference' => data_get($servicesPage, 'difference', []),
-        // 'difference' => $whyCards[4] ?? [], 
-             'difference' => $difference,
-            'variant' => 'services', 
+        'difference' => $difference,
+        'variant' => 'services',
     ])
 
     {{-- Media --}}
     @include('frontend.partials.media-section', [
-        // 'media' => data_get($servicesPage, 'media', []),
-         'media' => $media,
+        'media' => $media,
     ])
 
-    {{-- Portfolio --}}
+    {{-- Portfolio — rendered identically to the standalone Projects page --}}
     @include('frontend.partials.portfolio-section', [
-        'portfolio' => $portfolioData,
-        'isStandalone' => false,
+        'portfolio'    => $portfolioData,
+        'isStandalone' => true,
     ])
 @endsection
-

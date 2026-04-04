@@ -52,8 +52,8 @@ final class PageController extends Controller
         // For the Services page, use Why DB items for cards + DB portfolio
         if ($page === 'services') {
             $whyCards = Why::all()->take(4)->map(fn (Why $why): array => [
-                'icon'        => filled($why->image) ? route('public.media.show', ['path' => $why->image]) : null,
-                'icon_tone'   => 'dark-source',
+                'icon'        => filled($why->image) ? asset('storage/' . $why->image) : null,
+                'icon_tone'   => null,
                 'title'       => $why->title_en ?? '',
                 'description' => filled($why->content_en) ? strip_tags($why->content_en) : '',
                 'theme'       => 'dark',
