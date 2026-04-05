@@ -153,7 +153,7 @@ final class PageController extends Controller
 })->values()->all();
 
         return [
-            'heading'  => ['eyebrow' => 'OUR', 'title' => 'PORTFOLIOS'],
+            'heading'  => ['eyebrow' => '', 'title' => 'OUR PORTFOLIOS'],
             'tabs'     => $tabs,
             'projects' => $projects,
         ];

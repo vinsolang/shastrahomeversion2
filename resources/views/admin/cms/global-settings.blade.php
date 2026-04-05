@@ -67,7 +67,7 @@
                             class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-900"></div>
                 </div>
 
-                <div class="space-y-4 hidden">
+                <div class="space-y-4">
                     <h3 class="text-base font-semibold text-slate-800">Social Links</h3>
                     @foreach (range(0, 3) as $index)
                         <input type="hidden" name="sections[contact][socials][{{ $index }}][label]"

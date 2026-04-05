@@ -20,7 +20,7 @@ final class HomeController extends Controller
         $getHomePage = HomePageSetting::first();
         $banners = Banner::all();
 
-        // --- Step 2: Fetch Projects / Portfolio from DB ---
+        // --- Step 2: Fetch Projects / Portfolio from      DB ---
         $products = Product::with('category')->latest()->take(6)->get();
         $categories = Category::all();
 
@@ -60,7 +60,7 @@ final class HomeController extends Controller
         })->values()->all();
 
         $portfolioData = [
-            'heading'  => ['eyebrow' => 'OUR', 'title' => 'PORTFOLIOS'],
+            'heading'  => ['eyebrow' => '', 'title' => 'OUR PORTFOLIOS'],
             'tabs'     => $tabs,
             'projects' => $projects,
         ];

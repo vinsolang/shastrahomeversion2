@@ -310,8 +310,8 @@
             @if ($isStandalone)
                 <div class="projects-topbar" data-aos="fade-up">
                     <div class="projects-topbar__heading" aria-hidden="true">
-                        <span>{{ $heading['eyebrow'] ?? 'OUR' }}</span>
-                        <span>{{ $heading['title'] ?? 'PORTFOLIOS' }}</span>
+                        <span>{{ $heading['eyebrow'] ?? '' }}</span>
+                        <span>{{ $heading['title'] ?? 'OUR PORTFOLIOS' }}</span>
                     </div>
                     <div class="projects-topbar__tabs">
                         @foreach ($tabs as $tab)
@@ -329,8 +329,8 @@
             @else
                 <div class="projects-topbar-embedded" data-aos="fade-up">
                     <div class="projects-topbar-embedded__heading" aria-hidden="true">
-                        <span>{{ $heading['eyebrow'] ?? 'OUR' }}</span>
-                        <span>{{ $heading['title'] ?? 'PORTFOLIOS' }}</span>
+                        <span>{{ $heading['eyebrow'] ?? '' }}</span>
+                        <span>{{ $heading['title'] ?? 'OUR PORTFOLIOS' }}</span>
                     </div>
                     <div class="projects-topbar-embedded__tabs">
                         @foreach ($tabs as $tab)
