@@ -26,6 +26,9 @@ use App\Http\Controllers\admin\GlobalSettingsController as AdminGlobalSettingsCo
 use App\Http\Controllers\admin\ProductBackendController;
 use App\Http\Controllers\admin\ProjectBackendController;
 use App\Http\Controllers\admin\UploadController;
+use App\Http\Controllers\frontend\ContactController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/services', PageController::class)->defaults('page', 'services')->name('services');
@@ -37,6 +40,34 @@ Route::post('/contact', StoreContactSubmissionController::class)
     ->middleware('throttle:6,1')
     ->name('contact.store');
 
+// web.php
+Route::post('/contact-telegram', [ContactController::class, 'redirectToTelegram'])
+    ->name('contact.telegram');
+
+
+    // In your media controller / route
+Route::get('/media/{path}', function (Request $request, string $path) {
+
+    /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+    $disk = Storage::disk('custom');
+
+    abort_unless($disk->exists($path), 404);
+
+    $downloadName = $request->query('download_name', basename($path));
+    $mime = $disk->mimeType($path);
+
+    return response()->streamDownload(
+        function () use ($disk, $path) {
+            $stream = $disk->readStream($path);
+            fpassthru($stream);
+            if (is_resource($stream)) {
+                fclose($stream);
+            }
+        },
+        $downloadName,
+        ['Content-Type' => $mime]
+    );
+})->where('path', '.*')->name('public.media.show');
 // Route::prefix('cms')->name('cms.')->group(function (): void {
 //     Route::middleware('guest')->group(function (): void {
 //         Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');

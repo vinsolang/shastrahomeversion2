@@ -258,14 +258,14 @@
             </div>
 
             <div class="site-footer-legal">
-                <p>{{ data_get($footer, 'legal.copyright') }}</p>
+                <p>Copyright 2026 Shastra Home. All rights reserved.</p>
 
                 <div class="site-footer-legal__links">
                     @foreach ($legalLinks as $item)
                         @if (filled($item['href'] ?? null))
                             <a href="{{ $item['href'] }}">{{ $item['label'] }}</a>
                         @else
-                            <span class="site-footer-legal__placeholder">{{ $item['label'] }}</span>
+                            {{-- <span class="site-footer-legal__placeholder">{{ $item['label'] }}</span> --}}
                         @endif
                     @endforeach
                 </div>

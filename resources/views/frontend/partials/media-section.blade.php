@@ -116,9 +116,9 @@
 
                 {{-- Copy --}}
                 <div class="max-w-[15rem] md:max-w-[34rem] md:pl-[4.5rem] lg:max-w-[32rem] xl:max-w-[37rem] xl:pl-[clamp(3rem,7vw,8rem)]" :class="{ 'pl-[3.15rem]': videos.length > 1, 'pl-[0.6rem]': videos.length < 2 }" data-aos="fade-right" data-aos-delay="120">
-                    <p class="font-display text-[clamp(1.2rem,2vw,2.8rem)] leading-[1.12] italic font-normal text-white lg:text-[2.45rem] lg:leading-[1.08] xl:text-[2.8rem]">
-                        <span class="whitespace-nowrap">{{ $media['headline_prefix'] ?? '' }}<span class="font-editorial italic">{{ ' ' . ($media['headline_emphasis'] ?? '') }}</span></span>
-                        <span class="mt-1 block whitespace-nowrap md:mt-0">{{ $media['headline_suffix'] ?? '' }}<span class="text-[#ff9100]">{{ $media['accent'] ?? '' }}</span></span>
+                    <p class="md:w-full w-[80%] font-display text-[clamp(1rem,2vw,2rem)] sm:text-[clamp(1.2rem,2vw,2.8rem)] leading-[1.12] italic font-normal text-white lg:text-[2.45rem] lg:leading-[1.08] xl:text-[2.8rem]">
+                        <span class="whitespace-nowrap">Delivering thoughtful<span class="font-editorial italic"> design & quality</span></span>
+                        <span class="mt-1 block whitespace-nowrap md:mt-0">construction for modern living<span class="text-[#ff9100]">.</span></span>
                     </p>
                 </div>
             </div>

@@ -48,9 +48,9 @@
 @endphp
 
 <style>
-/* ─────────────────────────────────────────────────────────────
-   CARD BASE — zero shadows everywhere
-───────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════
+   CARD BASE
+═══════════════════════════════════════════════════════ */
 .project-card {
     cursor: pointer;
     outline: none;
@@ -58,18 +58,38 @@
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .project-card:focus-visible {
-    outline: 2px solid rgba(255, 136, 0, 0.55);
+    outline: 2px solid rgba(255, 138, 5, 0.55);
     outline-offset: 2px;
 }
-.project-card--expanded {
-    box-shadow: none !important;
+.project-card--expanded { box-shadow: none !important; }
+
+/* ═══════════════════════════════════════════════════════
+   FILTER TABS
+═══════════════════════════════════════════════════════ */
+.project-filter-tab {
+    position: relative;
+    padding-bottom: 6px;
+    transition: color 0.2s;
 }
+.project-filter-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: #ff8a05;
+    border-radius: 1px;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project-filter-tab--active::after,
+.project-filter-tab[data-active="true"]::after { transform: scaleX(1); }
+.project-filter-tab--active,
+.project-filter-tab[data-active="true"] { color: #ff8a05; }
 
-/* No embedded-breakout needed — all pages pass isStandalone=true */
-
-/* ─────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════
    COLLAPSED THUMBNAIL
-───────────────────────────────────────────────────────────── */
+═══════════════════════════════════════════════════════ */
 .project-story-fallback { width: 100%; height: 100%; overflow: hidden; }
 .project-story-fallback__media { width: 100%; height: 100%; }
 .project-story-fallback__media img,
@@ -80,27 +100,40 @@
 .project-card:hover .project-story-fallback__media img,
 .project-card:hover .project-story-fallback__media video { transform: scale(1.03); }
 
-/* ─────────────────────────────────────────────────────────────
-   STORY VIEW — horizontal snap-scroll container
-   Scroll order (left → right):
-     [1] Lead image panel (100% wide, auto-scrolled to on open)
-     [2] Details panel   (45% wide, swipe left to reveal)
-     [3…] Secondary image panels (62% wide each)
-───────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════
+   STORY VIEW — desktop + mobile shared
+   Mouse-drag enabled via JS below
+═══════════════════════════════════════════════════════ */
 .project-story-view {
     display: flex;
     overflow-x: auto;
-    gap: 0;
+    overflow-y: hidden;
+    gap: 12px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    height: 520px;          /* single source of truth for all panel heights */
+    /* FIX: explicit height with no min-height and no extra sizing */
+    height: 540px;
+    max-height: 540px;
+    min-height: 0;
+    align-items: stretch;
     scroll-behavior: smooth;
     width: 100%;
     padding: 0;
+    box-sizing: border-box;
     scrollbar-width: none;
     -ms-overflow-style: none;
     opacity: 0;
     animation: storyFadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    cursor: grab;
+    user-select: none;
+    /* FIX: prevent any overflow leaking outside the element */
+    overflow: hidden;
+    overflow-x: auto;
+}
+.project-story-view.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
 }
 .project-story-view::-webkit-scrollbar { display: none; }
 @keyframes storyFadeIn {
@@ -108,18 +141,19 @@
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─────────────────────────────────────────────────────────────
-   PANEL 1 — LEAD IMAGE (full-width, first in scroll)
-───────────────────────────────────────────────────────────── */
+/* ── Lead panel ── */
 .project-story-panel--lead {
-    flex: 0 0 calc(100% - 88px); /* peek: shows ~88px of the details panel on the right */
+    flex: 0 0 calc(100% - 88px);
     height: 100%;
     scroll-snap-align: start;
     overflow: hidden;
     position: relative;
+    border-radius: 0.75rem;
     opacity: 0;
     animation: leadIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.04s forwards;
+    pointer-events: none;
 }
+.project-story-view:not(.is-dragging) .project-story-panel--lead { pointer-events: auto; }
 @keyframes leadIn {
     from { opacity: 0; transform: scale(0.985) translateY(6px); }
     to   { opacity: 1; transform: scale(1) translateY(0); }
@@ -128,16 +162,15 @@
 .project-story-panel--lead video {
     width: 100%; height: 100%; object-fit: cover; display: block;
     transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 .project-story-panel--lead:hover img,
 .project-story-panel--lead:hover video { transform: scale(1.04); }
 
-/* ─────────────────────────────────────────────────────────────
-   PANEL 2 — DETAILS (text panel, second in scroll)
-   User swipes left from the lead image to reveal this.
-───────────────────────────────────────────────────────────── */
+/* ── Details panel ── */
 .project-story-panel--details {
-    flex: 0 0 calc(48% - 44px); /* peek: shows start of secondary image panel on the right */
+    flex: 0 0 calc(48% - 44px);
     min-width: 280px;
     height: 100%;
     scroll-snap-align: start;
@@ -148,50 +181,44 @@
     padding: 2.75rem 2.5rem 2.75rem 2.25rem;
     overflow-y: auto;
     overflow-x: hidden;
-    overscroll-behavior: contain;  /* stops scroll chaining into the horizontal parent */
-    touch-action: pan-y;           /* tells browser: handle vertical finger drags here */
+    overscroll-behavior-y: contain;
+    /* Allow BOTH axes so horizontal swipe passes through to the parent
+       snap-scroll container, while vertical scroll works inside the panel */
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
     box-sizing: border-box;
+    border-radius: 0.75rem;
     opacity: 0;
     animation: detailsIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards;
+    cursor: default;
+    pointer-events: auto !important;
 }
 @keyframes detailsIn {
     from { opacity: 0; transform: translateX(20px); }
     to   { opacity: 1; transform: translateX(0); }
 }
-
-/* Swipe hint arrow inside details panel */
 .project-story-panel--details .swipe-hint {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    margin-bottom: 2rem;
-    opacity: 0.35;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #1f1f1f;
-    user-select: none;
+    display: flex; align-items: center; gap: 0.35rem;
+    margin-bottom: 2rem; opacity: 0.35;
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: #1f1f1f; user-select: none;
     animation: swipeHintPulse 2s ease-in-out 1.2s 2 alternate;
 }
 @keyframes swipeHintPulse {
     from { opacity: 0.35; transform: translateX(0); }
     to   { opacity: 0.65; transform: translateX(4px); }
 }
-.project-story-panel--details .swipe-hint svg {
-    width: 14px; height: 14px;
-    flex-shrink: 0;
-}
+.project-story-panel--details .swipe-hint svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-/* ─────────────────────────────────────────────────────────────
-   PANELS 3+ — SECONDARY image-only panels
-───────────────────────────────────────────────────────────── */
+/* ── Secondary image panels ── */
 .project-story-panel {
-    flex: 0 0 68%; /* shows ~32% of the next secondary panel as a peek */
+    flex: 0 0 68%;
     height: 100%;
     scroll-snap-align: start;
     overflow: hidden;
     position: relative;
+    border-radius: 0.75rem;
     opacity: 0;
     animation: panelIn 0.48s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -204,99 +231,142 @@
     from { opacity: 0; transform: translateX(22px); }
     to   { opacity: 1; transform: translateX(0); }
 }
-.project-story-panel__media { height: 100%; width: 100%; overflow: hidden; }
+.project-story-panel__media { height: 100%; width: 100%; overflow: hidden; border-radius: inherit; }
 .project-story-panel__media img,
 .project-story-panel__media video {
     width: 100%; height: 100%; object-fit: cover; display: block;
     transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 .project-story-panel:hover .project-story-panel__media img,
 .project-story-panel:hover .project-story-panel__media video { transform: scale(1.03); }
 
-/* ─────────────────────────────────────────────────────────────
-   DETAILS COPY — typography & layout
-───────────────────────────────────────────────────────────── */
+/* ── Details copy ── */
 .project-story-copy__label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #ff8800;
-    margin: 0 0 0.6rem;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: #ff8800; margin: 0 0 0.6rem;
 }
 .project-story-copy__title {
     font-size: clamp(1.4rem, 2.2vw, 2rem);
-    font-weight: 600;
-    line-height: 1.15;
-    color: #1f1f1f;
-    margin: 0 0 1.6rem;
-    padding-bottom: 1.4rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    font-weight: 600; line-height: 1.15; color: #1f1f1f;
+    margin: 0 0 1.6rem; padding-bottom: 1.4rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
 }
-.project-story-copy__fields {
-    display: flex;
-    flex-direction: column;
-    gap: 1.35rem;
-}
-.project-story-copy__field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.28rem;
-}
+.project-story-copy__fields { display: flex; flex-direction: column; gap: 1.35rem; }
+.project-story-copy__field { display: flex; flex-direction: column; gap: 0.28rem; }
 .project-story-copy__field-label {
-    font-size: 0.67rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #b0b0b0;
+    font-size: 0.67rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase; color: #b0b0b0;
 }
-.project-story-copy__field-value {
-    font-size: 0.96rem;
-    line-height: 1.62;
-    color: #2e2e2e;
-}
+.project-story-copy__field-value { font-size: 0.96rem; line-height: 1.62; color: #2e2e2e; }
 
-/* ─────────────────────────────────────────────────────────────
-   META COLUMN (visible only when card is collapsed)
-───────────────────────────────────────────────────────────── */
 .project-row__meta--hidden { display: none !important; }
-.project-row__preview { width: 100%; overflow: hidden; }
-.project-row { transition: border-radius 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+.project-row__preview { width: 100%; overflow: hidden; max-height: inherit; }
+.project-row { transition: border-radius 0.4s cubic-bezier(0.22, 1, 0.36, 1); overflow: hidden; }
 
-/* ─────────────────────────────────────────────────────────────
-   RESPONSIVE — stack vertically on mobile
-───────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════
+   MOBILE EXPANDED — uses the SAME story-view strip
+   as desktop. Mouse drag + touch swipe both work.
+═══════════════════════════════════════════════════════ */
+
+/* Hide the old split layout entirely on all screens */
+.project-mobile-expanded { display: none !important; }
+
 @media (max-width: 767px) {
-    .project-story-view { height: 320px; }
 
+    /* Let the desktop story-view render on mobile too */
+    .project-story-view {
+        display: flex !important;
+        height: 420px;
+        max-height: 420px;
+        min-height: 0;
+    }
+
+    /* ── Lead panel: slightly narrower on mobile ── */
     .project-story-panel--lead {
-        flex: 0 0 calc(100% - 48px); /* ~48px peek of details on mobile */
+        flex: 0 0 calc(100% - 72px);
     }
+
+    /* ── Details panel: narrower min-width, tighter padding ── */
     .project-story-panel--details {
-        flex: 0 0 calc(88% - 36px); /* peek of secondary image on mobile */
-        min-width: unset;
-        padding: 1.5rem 1.25rem 2rem;
-        justify-content: flex-start;
+        flex: 0 0 calc(55% - 36px);
+        min-width: 240px;
+        padding: 1.75rem 1.5rem 1.75rem 1.4rem;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y;
+        pointer-events: auto !important;
     }
-    .project-story-panel--details .swipe-hint { margin-bottom: 1.25rem; }
 
-    .project-story-panel { flex: 0 0 80%; }
+    /* ── Secondary panels: slightly wider proportion ── */
+    .project-story-panel {
+        flex: 0 0 72%;
+    }
 
+    /* ── Details copy: scale down text slightly ── */
     .project-story-copy__title {
-        font-size: 1.2rem;
-        margin-bottom: 1.1rem;
-        padding-bottom: 0.9rem;
+        font-size: clamp(1.1rem, 4vw, 1.5rem);
+        margin: 0 0 1.1rem;
+        padding-bottom: 1rem;
     }
+    .project-story-copy__fields { gap: 1rem; }
+
+    /* ── Swipe hint: keep visible on mobile ── */
+    .project-story-panel--details .swipe-hint { display: flex; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   SCROLL FAB
+═══════════════════════════════════════════════════════ */
+.portfolio-fab {
+    position: fixed; right: 1rem; top: 50%;
+    transform: translateY(-50%); z-index: 700;
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 6px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.28s ease, translate 0.28s cubic-bezier(0.22,1,0.36,1);
+    translate: 16px 0;
+}
+.portfolio-fab.is-visible { opacity: 1; pointer-events: auto; translate: 0 0; }
+.portfolio-fab__toggle {
+    display: flex; align-items: center; gap: 6px;
+    padding: 0.48rem 0.85rem; background: #1a1a1a; color: #fff;
+    border: none; border-radius: 2rem;
+    font-size: 0.77rem; font-weight: 600; letter-spacing: 0.03em;
+    cursor: pointer; white-space: nowrap;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25); transition: background 0.16s;
+}
+.portfolio-fab__toggle:hover { background: #2e2e2e; }
+.portfolio-fab__toggle svg { width: 12px; height: 12px; flex-shrink: 0; }
+.portfolio-fab__menu {
+    background: #fff; border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 0.9rem; padding: 0.28rem;
+    min-width: 138px; display: flex; flex-direction: column; gap: 1px;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.13);
+    opacity: 0; transform: scale(0.92) translateY(8px);
+    transform-origin: top right; pointer-events: none;
+    transition: opacity 0.2s cubic-bezier(0.22,1,0.36,1),
+                transform 0.2s cubic-bezier(0.22,1,0.36,1);
+}
+.portfolio-fab__menu.is-open { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
+.portfolio-fab__item {
+    padding: 0.38rem 0.65rem; font-size: 0.81rem; border-radius: 0.55rem;
+    cursor: pointer; color: #2a2a2a; text-align: right;
+    transition: background 0.13s; white-space: nowrap;
+}
+.portfolio-fab__item:hover { background: rgba(255,138,5,0.09); }
+.portfolio-fab__item.is-active { color: #ff8a05; font-weight: 600; }
 </style>
 
-{{-- ── Portfolio ── --}}
 <section
     x-data="projectsPortfolio(@js([
         'tabs'         => $tabs,
         'projects'     => $interactiveProjects,
         'isStandalone' => $isStandalone,
     ]))"
+    x-init="activeCategory = null"
     @class([
         'portfolio-section',
         'portfolio-section--standalone' => $isStandalone,
@@ -306,48 +376,34 @@
     <div class="mx-auto max-w-[1904px]">
         <div class="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-8">
 
-            {{-- ── Header ── --}}
             @if ($isStandalone)
-                <div class="projects-topbar" data-aos="fade-up">
-                    <div class="projects-topbar__heading" aria-hidden="true">
-                        <span>{{ $heading['eyebrow'] ?? '' }}</span>
-                        <span>{{ $heading['title'] ?? 'OUR PORTFOLIOS' }}</span>
-                    </div>
+                <div class="" data-aos="fade-up">
+                    <div class="text-[#ff8a05] pb-12" aria-hidden="true"><span>OUR PORTFOLIOS</span></div>
                     <div class="projects-topbar__tabs">
                         @foreach ($tabs as $tab)
-                            <button
-                                type="button"
-                                class="project-filter-tab"
+                            <button type="button" class="project-filter-tab"
                                 :class="{ 'project-filter-tab--active': activeCategory === '{{ $tab }}' }"
                                 :data-active="activeCategory === '{{ $tab }}' ? 'true' : 'false'"
                                 :aria-pressed="activeCategory === '{{ $tab }}' ? 'true' : 'false'"
-                                @click="setCategory('{{ $tab }}')"
-                            >{{ $tab }}</button>
+                                @click="setCategory('{{ $tab }}')">{{ $tab }}</button>
                         @endforeach
                     </div>
                 </div>
             @else
                 <div class="projects-topbar-embedded" data-aos="fade-up">
-                    <div class="projects-topbar-embedded__heading" aria-hidden="true">
-                        <span>{{ $heading['eyebrow'] ?? '' }}</span>
-                        <span>{{ $heading['title'] ?? 'OUR PORTFOLIOS' }}</span>
-                    </div>
+                    <div class="projects-topbar-embedded__heading"><span>OUR PORTFOLIOS</span></div>
                     <div class="projects-topbar-embedded__tabs">
                         @foreach ($tabs as $tab)
-                            <button
-                                type="button"
-                                class="project-filter-tab"
+                            <button type="button" class="project-filter-tab"
                                 :class="{ 'project-filter-tab--active': activeCategory === '{{ $tab }}' }"
                                 :data-active="activeCategory === '{{ $tab }}' ? 'true' : 'false'"
                                 :aria-pressed="activeCategory === '{{ $tab }}' ? 'true' : 'false'"
-                                @click="setCategory('{{ $tab }}')"
-                            >{{ $tab }}</button>
+                                @click="setCategory('{{ $tab }}')">{{ $tab }}</button>
                         @endforeach
                     </div>
                 </div>
             @endif
 
-            {{-- ── Project list ── --}}
             <div
                 class="project-list space-y-5 lg:space-y-6"
                 :class="{
@@ -366,6 +422,8 @@
                     @php
                         $leadMedia      = $project['gallery'][0] ?? null;
                         $secondaryMedia = array_slice($project['gallery'], 1);
+                        $allMedia       = $project['gallery'];
+                        $mediaCount     = count($allMedia);
                     @endphp
 
                     <article
@@ -379,11 +437,9 @@
                         x-transition:leave-end="opacity-0 -translate-y-2 scale-[0.99]"
                         class="project-card"
                         :class="{ 'project-card--expanded': isExpanded('{{ $project['id'] }}') }"
-                        data-aos="fade-up"
-                        data-aos-duration="760"
+                        data-aos="fade-up" data-aos-duration="760"
                         data-aos-delay="{{ 80 + ($loop->index * 70) }}"
-                        role="button"
-                        tabindex="0"
+                        role="button" tabindex="0"
                         @click="handleCardClick($event, '{{ $project['id'] }}')"
                         @keydown.enter.self.prevent="toggleProject('{{ $project['id'] }}', { source: 'keyboard' })"
                         @keydown.space.self.prevent="toggleProject('{{ $project['id'] }}', { source: 'keyboard' })"
@@ -391,11 +447,9 @@
                         aria-controls="project-detail-{{ $project['id'] }}"
                     >
                         <div class="project-row" :class="{ 'project-row--expanded': isExpanded('{{ $project['id'] }}') }">
-
-                            {{-- ── Media / story area ── --}}
                             <div class="project-row__preview" data-project-preview>
 
-                                {{-- ── COLLAPSED: single cover thumbnail ── --}}
+                                {{-- ══ COLLAPSED: cover thumbnail ══ --}}
                                 <div
                                     class="project-story-fallback"
                                     x-show="!isExpanded('{{ $project['id'] }}')"
@@ -407,211 +461,474 @@
                                     <div class="project-story-fallback__media">
                                         @if ($leadMedia)
                                             @if (($leadMedia['type'] ?? 'image') === 'video')
-                                                <video
-                                                    class="h-full w-full object-cover"
-                                                    autoplay muted loop playsinline preload="metadata"
+                                                <video class="h-full w-full object-cover" autoplay muted loop playsinline preload="metadata"
                                                     @if (filled($leadMedia['poster'] ?? null)) poster="{{ $leadMedia['poster'] }}" @endif
                                                 ><source src="{{ $leadMedia['src'] }}"@if (filled($leadMedia['mime'] ?? null)) type="{{ $leadMedia['mime'] }}"@endif></video>
                                             @else
-                                                <img
-                                                    src="{{ $leadMedia['src'] }}"
-                                                    alt="{{ $leadMedia['alt'] }}"
-                                                    class="h-full w-full object-cover"
-                                                    loading="lazy"
-                                                    decoding="async"
-                                                >
+                                                <img src="{{ $leadMedia['src'] }}" alt="{{ $leadMedia['alt'] }}" class="h-full w-full object-cover" loading="lazy" decoding="async">
                                             @endif
                                         @endif
                                     </div>
                                 </div>
 
-                                {{-- ── EXPANDED: horizontal snap-scroll story ──
-                                     Scroll order (left → right):
-                                       [1] Lead image    — full-width, shown first on open (scrollLeft = 0)
-                                       [2] Details panel — title, spec, concept, location (swipe left to see)
-                                       [3…] Secondary image panels (62% wide each)
-                                --}}
+                                {{-- ══ MOBILE EXPANDED: hidden (using story-view instead) ══ --}}
                                 <div
-                                    class="project-story-view js-project-story-view"
-                                    data-project-story-view
+                                    class="project-mobile-expanded"
                                     x-show="isExpanded('{{ $project['id'] }}')"
-                                    x-effect="
-                                        if (isExpanded('{{ $project['id'] }}')) {
-                                            $nextTick(() => { $el.scrollLeft = 0; });
-                                        }
-                                    "
+                                    @click.stop
                                 >
-                                    {{-- ── PANEL 1: Lead image — full-width, always first ── --}}
-                                    @if ($leadMedia)
-                                        <div class="project-story-panel--lead">
+                                    {{-- Left: lead image with title/location overlay --}}
+                                    <div class="project-mobile-image">
+                                        <button class="project-mobile-close" type="button" aria-label="Close"
+                                            @click.stop="toggleProject('{{ $project['id'] }}', { source: 'keyboard' })">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                                                <path d="M18 6L6 18M6 6l12 12"/>
+                                            </svg>
+                                        </button>
+
+                                        @if ($leadMedia)
                                             @if (($leadMedia['type'] ?? 'image') === 'video')
-                                                <video
-                                                    class="h-full w-full object-cover"
-                                                    autoplay muted loop playsinline preload="metadata"
+                                                <video class="h-full w-full object-cover" autoplay muted loop playsinline preload="metadata"
                                                     @if (filled($leadMedia['poster'] ?? null)) poster="{{ $leadMedia['poster'] }}" @endif
                                                 ><source src="{{ $leadMedia['src'] }}"@if (filled($leadMedia['mime'] ?? null)) type="{{ $leadMedia['mime'] }}"@endif></video>
                                             @else
-                                                <img
-                                                    src="{{ $leadMedia['src'] }}"
-                                                    alt="{{ $leadMedia['alt'] }}"
-                                                    class="h-full w-full object-cover"
-                                                    loading="lazy"
-                                                    decoding="async"
-                                                >
+                                                <img src="{{ $leadMedia['src'] }}" alt="{{ $leadMedia['alt'] }}" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                                            @endif
+                                        @endif
+
+                                        <div class="project-mobile-image-footer">
+                                            <span class="project-mobile-image-footer__type">{{ $project['type_label'] }}</span>
+                                            <p class="project-mobile-image-footer__title">{{ $project['title'] }}</p>
+                                            @if (filled($project['location'] ?? null))
+                                                <p class="project-mobile-image-footer__location">
+                                                    <svg viewBox="0 0 16 16" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M8 1.5C5.52 1.5 3.5 3.52 3.5 6c0 3.75 4.5 8.5 4.5 8.5s4.5-4.75 4.5-8.5C12.5 3.52 10.48 1.5 8 1.5z"/>
+                                                        <circle cx="8" cy="6" r="1.6"/>
+                                                    </svg>
+                                                    {{ $project['location'] }}
+                                                </p>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="project-mobile-details" @click.stop>
+                                        <p class="project-mobile-details__label">{{ $project['type_label'] }}</p>
+                                        <h3 class="project-mobile-details__title">{{ $project['title'] }}</h3>
+                                        <div class="project-mobile-details__fields">
+                                            @if (filled($project['specification'] ?? null))
+                                                <div>
+                                                    <span class="project-mobile-details__field-label">Specifications</span>
+                                                    <p class="project-mobile-details__field-value">{{ $project['specification'] }}</p>
+                                                </div>
+                                            @endif
+                                            @if (filled($project['concept'] ?? null))
+                                                <div>
+                                                    <span class="project-mobile-details__field-label">Concept</span>
+                                                    <p class="project-mobile-details__field-value">{{ $project['concept'] }}</p>
+                                                </div>
+                                            @endif
+                                            @if (filled($project['location'] ?? null))
+                                                <div>
+                                                    <span class="project-mobile-details__field-label">Location</span>
+                                                    <p class="project-mobile-details__field-value">{{ $project['location'] }}</p>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- ══ DESKTOP + MOBILE EXPANDED: horizontal snap-scroll story ══ --}}
+                                <div
+                                    x-show="isExpanded('{{ $project['id'] }}')"
+                                    style="overflow:hidden;"
+                                >
+                                <div
+                                    class="project-story-view js-project-story-view"
+                                    data-project-story-view
+                                    x-effect="if (isExpanded('{{ $project['id'] }}')) { $nextTick(() => { $el.scrollLeft = 0; }); }"
+                                >
+                                    @if ($leadMedia)
+                                        <div class="project-story-panel--lead">
+                                            @if (($leadMedia['type'] ?? 'image') === 'video')
+                                                <video class="h-full w-full object-cover" autoplay muted loop playsinline preload="metadata"
+                                                    @if (filled($leadMedia['poster'] ?? null)) poster="{{ $leadMedia['poster'] }}" @endif
+                                                ><source src="{{ $leadMedia['src'] }}"@if (filled($leadMedia['mime'] ?? null)) type="{{ $leadMedia['mime'] }}"@endif></video>
+                                            @else
+                                                <img src="{{ $leadMedia['src'] }}" alt="{{ $leadMedia['alt'] }}" class="h-full w-full object-cover" loading="lazy" decoding="async">
                                             @endif
                                         </div>
                                     @endif
 
-                                    {{-- ── PANEL 2: Project details — text panel, second in scroll ── --}}
                                     <div class="project-story-panel--details">
-
-                                        {{-- Swipe hint pointing right toward images --}}
                                         <p class="swipe-hint" aria-hidden="true">
                                             More images
-                                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M6 3l5 5-5 5"/>
-                                            </svg>
+                                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg>
                                         </p>
-
-                                        <p class="project-story-copy__label">
-                                            {{ $project['type_label'] }}
-                                        </p>
-
-                                        <h3 class="project-story-copy__title">
-                                            {{ $project['title'] }}
-                                        </h3>
-
+                                        <p class="project-story-copy__label">{{ $project['type_label'] }}</p>
+                                        <h3 class="project-story-copy__title">{{ $project['title'] }}</h3>
                                         <div class="project-story-copy__fields">
-
                                             @if (filled($project['specification'] ?? null))
                                                 <div class="project-story-copy__field">
                                                     <span class="project-story-copy__field-label">Specifications</span>
                                                     <span class="project-story-copy__field-value">{{ $project['specification'] }}</span>
                                                 </div>
                                             @endif
-
                                             @if (filled($project['concept'] ?? null))
                                                 <div class="project-story-copy__field">
                                                     <span class="project-story-copy__field-label">Concept</span>
                                                     <span class="project-story-copy__field-value">{{ $project['concept'] }}</span>
                                                 </div>
                                             @endif
-
                                             @if (filled($project['location'] ?? null))
                                                 <div class="project-story-copy__field">
                                                     <span class="project-story-copy__field-label">Location</span>
                                                     <span class="project-story-copy__field-value">{{ $project['location'] }}</span>
                                                 </div>
                                             @endif
-
                                         </div>
-                                    </div>{{-- /details panel --}}
+                                    </div>
 
-                                    {{-- ── PANELS 3+: Secondary image-only panels ── --}}
                                     @foreach ($secondaryMedia as $media)
                                         <div class="project-story-panel">
                                             <div class="project-story-panel__media">
                                                 @if (($media['type'] ?? 'image') === 'video')
-                                                    <video
-                                                        class="h-full w-full object-cover"
-                                                        autoplay muted loop playsinline preload="metadata"
+                                                    <video class="h-full w-full object-cover" autoplay muted loop playsinline preload="metadata"
                                                         @if (filled($media['poster'] ?? null)) poster="{{ $media['poster'] }}" @endif
                                                     ><source src="{{ $media['src'] }}"@if (filled($media['mime'] ?? null)) type="{{ $media['mime'] }}"@endif></video>
                                                 @else
-                                                    <img
-                                                        src="{{ $media['src'] }}"
-                                                        alt="{{ $media['alt'] }}"
-                                                        class="h-full w-full object-cover"
-                                                        loading="lazy"
-                                                        decoding="async"
-                                                    >
+                                                    <img src="{{ $media['src'] }}" alt="{{ $media['alt'] }}" class="h-full w-full object-cover" loading="lazy" decoding="async">
                                                 @endif
                                             </div>
                                         </div>
                                     @endforeach
+                                </div>
+                                </div>{{-- end collapsing wrapper --}}
 
-                                </div>{{-- /story-view --}}
+                            </div>
 
-                            </div>{{-- /preview --}}
-
-                            {{-- ── Meta column — visible only when card is collapsed ── --}}
-                            <div
-                                class="project-row__meta"
+                            <div class="project-row__meta"
                                 :class="{ 'project-row__meta--hidden': isExpanded('{{ $project['id'] }}') }"
-                                id="project-detail-{{ $project['id'] }}"
-                            >
+                                id="project-detail-{{ $project['id'] }}">
                                 <div>
-                                    <p
-                                        class="project-row__type"
-                                        x-text="activeCategory || '{{ addslashes($project['type_label']) }}'"
-                                    >{{ $project['type_label'] }}</p>
+                                    <p class="project-row__type" x-text="activeCategory || '{{ addslashes($project['type_label']) }}'">{{ $project['type_label'] }}</p>
                                     <h2 class="project-row__title">{{ $project['title'] }}</h2>
                                 </div>
-
                                 <div class="space-y-2">
                                     <p class="project-row__section-title">Specifications</p>
                                     <p class="project-row__detail">{{ $project['specification'] }}</p>
                                     <p class="project-row__detail">{{ $project['location'] }}</p>
                                 </div>
-
-                                <div
-                                    class="project-concept-panel"
+                                <div class="project-concept-panel"
                                     :class="{ 'project-concept-panel--expanded': isExpanded('{{ $project['id'] }}') }"
-                                    :aria-hidden="(!isExpanded('{{ $project['id'] }}')).toString()"
-                                >
+                                    :aria-hidden="(!isExpanded('{{ $project['id'] }}')).toString()">
                                     <div class="project-concept-panel__inner">
                                         <p class="project-row__section-title">Concept</p>
                                         <p class="project-row__detail project-row__concept">{{ $project['concept'] }}</p>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>{{-- /project-row --}}
+                        </div>
                     </article>
                 @endforeach
-            </div>{{-- /project-list --}}
+            </div>
+        </div>
+    </div>
 
+    {{-- SCROLL FAB --}}
+    <div class="portfolio-fab" id="js-portfolio-fab" aria-label="Filter projects">
+        <button class="portfolio-fab__toggle" id="js-fab-toggle" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="1" y1="4" x2="15" y2="4"/><line x1="3" y1="8" x2="13" y2="8"/><line x1="5" y1="12" x2="11" y2="12"/>
+            </svg>
+            <span id="js-fab-label">All</span>
+            <svg id="js-fab-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M4 6l4 4 4-4"/>
+            </svg>
+        </button>
+        <div class="portfolio-fab__menu" id="js-fab-menu" role="listbox">
+            @foreach ($tabs as $tab)
+                <div class="portfolio-fab__item" role="option" tabindex="0" data-tab="{{ $tab }}">{{ $tab }}</div>
+            @endforeach
         </div>
     </div>
 </section>
 
 <script>
-/**
- * Details-panel vertical scroll fix
- * ─────────────────────────────────
- * The horizontal snap-scroll container (.project-story-view) normally swallows
- * ALL wheel events, so the inner details panel can never scroll vertically via
- * mouse wheel or trackpad.
- *
- * Fix: intercept wheel events at capture phase. When the pointer is inside a
- * details panel AND the user is scrolling more vertically than horizontally,
- * we scroll the panel ourselves and prevent the event from reaching the
- * horizontal container.
- */
+/* ══════════════════════════════════════════════════════
+   DESKTOP WHEEL HANDLER
+   Unified capture-phase handler for the story-view.
+   A) Not in story-view          → ignore
+   B) More horizontal than vert  → let snap-scroll handle
+   C) In details panel           → scroll the panel; overflow to page
+   D) In image panel             → scroll the page
+══════════════════════════════════════════════════════ */
+(function () {
+    'use strict';
+    document.addEventListener('wheel', function (e) {
+        var sv = e.target.closest && e.target.closest('.project-story-view');
+        if (!sv) return;
+        var absX = Math.abs(e.deltaX), absY = Math.abs(e.deltaY);
+        if (absX >= absY) return; /* B */
+        var dp = e.target.closest && e.target.closest('.project-story-panel--details');
+        e.preventDefault(); e.stopPropagation();
+        if (dp) {
+            var atBottom = dp.scrollTop >= dp.scrollHeight - dp.clientHeight - 1;
+            var atTop    = dp.scrollTop <= 0;
+            if ((e.deltaY > 0 && !atBottom) || (e.deltaY < 0 && !atTop)) {
+                dp.scrollTop += e.deltaY;
+            } else {
+                window.scrollBy({ top: e.deltaY, behavior: 'auto' });
+            }
+        } else {
+            window.scrollBy({ top: e.deltaY, behavior: 'auto' });
+        }
+    }, { passive: false, capture: true });
+}());
+
+/* ══════════════════════════════════════════════════════
+   DESKTOP MOUSE-DRAG TO SCROLL story-view
+   Lets users click-and-drag left/right with a mouse
+   (same as touch-scroll on mobile).
+══════════════════════════════════════════════════════ */
 (function () {
     'use strict';
 
-    document.addEventListener('wheel', function (e) {
-        /** @type {HTMLElement|null} */
-        var panel = e.target && e.target.closest
-            ? e.target.closest('.project-story-panel--details')
-            : null;
+    var dragging = false;
+    var startX   = 0;
+    var scrollX  = 0;
+    var target   = null;
 
-        if (!panel) return;
+    document.addEventListener('mousedown', function (e) {
+        var sv = e.target.closest && e.target.closest('.project-story-view');
+        if (!sv) return;
+        /* Only left button; ignore clicks inside the details text panel */
+        if (e.button !== 0) return;
+        if (e.target.closest('.project-story-panel--details')) return;
 
-        var isVertical = Math.abs(e.deltaY) > Math.abs(e.deltaX);
-        if (!isVertical) return;
+        dragging = true;
+        target   = sv;
+        startX   = e.pageX - sv.offsetLeft;
+        scrollX  = sv.scrollLeft;
+        sv.classList.add('is-dragging');
+        e.preventDefault();
+    });
 
-        // Check whether the panel actually has overflowing content to scroll.
-        var canScrollDown = e.deltaY > 0 && panel.scrollTop < (panel.scrollHeight - panel.clientHeight - 1);
-        var canScrollUp   = e.deltaY < 0 && panel.scrollTop > 0;
+    document.addEventListener('mousemove', function (e) {
+        if (!dragging || !target) return;
+        var x    = e.pageX - target.offsetLeft;
+        var walk = (x - startX) * 1.4; /* multiplier for feel */
+        target.scrollLeft = scrollX - walk;
+    });
 
-        if (canScrollDown || canScrollUp) {
-            // Take over: scroll the panel, block the horizontal container.
-            e.stopPropagation();
-            e.preventDefault();
-            panel.scrollTop += e.deltaY;
+    function stopDrag() {
+        if (!dragging || !target) return;
+        dragging = false;
+        target.classList.remove('is-dragging');
+        target = null;
+    }
+
+    document.addEventListener('mouseup',    stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
+}());
+
+/* ══════════════════════════════════════════════════════
+   TOUCH HANDLER — details panel + story-view swipe
+   • Horizontal swipe anywhere in story-view → scroll the strip
+   • Vertical swipe inside details panel     → scroll the panel text
+   • Vertical swipe outside details panel    → scroll the page
+   Direction is determined from the FIRST move after touchstart.
+══════════════════════════════════════════════════════ */
+(function () {
+    'use strict';
+
+    var startX    = 0;
+    var startY    = 0;
+    var direction = null; /* 'h' | 'v' | null */
+    var activeSv  = null;
+    var activeDp  = null;
+
+    document.addEventListener('touchstart', function (e) {
+        direction = null;
+        activeSv  = e.target.closest && e.target.closest('.project-story-view');
+        activeDp  = e.target.closest && e.target.closest('.project-story-panel--details');
+        if (!activeSv) return;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function (e) {
+        if (!activeSv) return;
+
+        var dx = e.touches[0].clientX - startX;
+        var dy = e.touches[0].clientY - startY;
+
+        /* Lock direction on first meaningful move */
+        if (!direction && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) {
+            direction = Math.abs(dx) >= Math.abs(dy) ? 'h' : 'v';
         }
-    }, { passive: false, capture: true });
+        if (!direction) return;
+
+        if (direction === 'h') {
+            /* Horizontal → let the snap-scroll container handle it natively.
+               We must NOT preventDefault here so the browser can scroll. */
+            return;
+        }
+
+        /* Vertical swipe */
+        if (activeDp) {
+            /* Inside details panel: scroll the panel vertically */
+            var atBottom = activeDp.scrollTop >= activeDp.scrollHeight - activeDp.clientHeight - 1;
+            var atTop    = activeDp.scrollTop <= 0;
+            var goingDown = dy < 0;
+            var goingUp   = dy > 0;
+
+            if ((goingDown && !atBottom) || (goingUp && !atTop)) {
+                /* Panel still has room — let native scroll work, stop horizontal steal */
+                e.stopPropagation();
+            }
+            /* If panel is at limit, fall through so page can scroll */
+        }
+        /* Outside details panel: let the page scroll naturally */
+    }, { passive: true });
+
+    document.addEventListener('touchend', function () {
+        direction = null;
+        activeSv  = null;
+        activeDp  = null;
+    }, { passive: true });
+}());
+</script>
+
+<script>
+/* Scroll FAB */
+(function () {
+    var fab   = document.getElementById('js-portfolio-fab');
+    var btn   = document.getElementById('js-fab-toggle');
+    var menu  = document.getElementById('js-fab-menu');
+    var lbl   = document.getElementById('js-fab-label');
+    var chev  = document.getElementById('js-fab-chevron');
+    var items = menu ? Array.prototype.slice.call(menu.querySelectorAll('.portfolio-fab__item')) : [];
+    if (!fab || !btn || !menu) return;
+
+    var open = false;
+
+    function onScroll() {
+        var past = window.scrollY > 160;
+        fab.classList.toggle('is-visible', past);
+        if (!past && open) closeMenu();
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    function openMenu() {
+        open = true; menu.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true');
+        var p = chev.querySelector('path'); if (p) p.setAttribute('d', 'M4 10l4-4 4 4');
+    }
+    function closeMenu() {
+        open = false; menu.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false');
+        var p = chev.querySelector('path'); if (p) p.setAttribute('d', 'M4 6l4 4 4-4');
+    }
+
+    btn.addEventListener('click', function (e) { e.stopPropagation(); open ? closeMenu() : openMenu(); });
+    document.addEventListener('click', function (e) { if (!fab.contains(e.target)) closeMenu(); });
+
+    function callSetCategory(cat) {
+        var section = fab.closest('section') || document.querySelector('.portfolio-section');
+        if (!section) return;
+        try {
+            var stack = section._x_dataStack;
+            if (stack && stack[0] && typeof stack[0].setCategory === 'function') { stack[0].setCategory(cat); return; }
+            if (window.Alpine && Alpine.closestDataStack) {
+                var s = Alpine.closestDataStack(section);
+                if (s && s[0] && typeof s[0].setCategory === 'function') { s[0].setCategory(cat); return; }
+            }
+        } catch (err) {}
+        document.querySelectorAll('.project-filter-tab').forEach(function (t) {
+            if (t.textContent.trim() === cat) t.click();
+        });
+    }
+
+    function selectItem(item) {
+        items.forEach(function (i) { i.classList.toggle('is-active', i === item); });
+        lbl.textContent = item.dataset.tab;
+        callSetCategory(item.dataset.tab);
+        closeMenu();
+    }
+
+    items.forEach(function (item) {
+        item.addEventListener('click', function (e) { e.stopPropagation(); selectItem(item); });
+        item.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectItem(item); }
+        });
+    });
+}());
+</script>
+
+<script>
+/* ══════════════════════════════════════════════════════
+   MOBILE SCROLL DOTS
+   Injects dot indicators below each story-view on mobile
+   and keeps the active dot in sync with scroll position.
+══════════════════════════════════════════════════════ */
+(function () {
+    'use strict';
+
+    function initDots(sv) {
+        var panels = Array.prototype.slice.call(
+            sv.querySelectorAll(
+                '.project-story-panel--lead, .project-story-panel--details, .project-story-panel'
+            )
+        );
+        if (panels.length < 2) return;
+
+        var wrap = document.createElement('div');
+        wrap.className = 'story-dots';
+
+        var dots = panels.map(function (_, i) {
+            var d = document.createElement('span');
+            d.className = 'story-dot' + (i === 0 ? ' is-active' : '');
+            wrap.appendChild(d);
+            return d;
+        });
+
+        sv.parentNode.insertBefore(wrap, sv.nextSibling);
+
+        var ticking = false;
+        sv.addEventListener('scroll', function () {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function () {
+                ticking = false;
+                var svLeft = sv.scrollLeft;
+                var svWidth = sv.clientWidth;
+                var best = 0, bestScore = Infinity;
+                panels.forEach(function (p, i) {
+                    var score = Math.abs(p.offsetLeft - svLeft - (svWidth * 0.1));
+                    if (score < bestScore) { bestScore = score; best = i; }
+                });
+                dots.forEach(function (d, i) {
+                    d.classList.toggle('is-active', i === best);
+                });
+            });
+        }, { passive: true });
+    }
+
+    function setup() {
+        document.querySelectorAll('.js-project-story-view').forEach(initDots);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setup);
+    } else {
+        setup();
+    }
+
+    document.addEventListener('click', function () {
+        setTimeout(function () {
+            document.querySelectorAll('.js-project-story-view').forEach(function (sv) {
+                if (!sv.querySelector('.story-dots')) initDots(sv);
+            });
+        }, 600);
+    });
 }());
 </script>

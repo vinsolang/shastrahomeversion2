@@ -21,7 +21,7 @@
     <div class="">
         <div class="my-4 flex items-center justify-end">
 
-            <a href="{{ route('about.create') }}"
+            {{-- <a href="{{ route('about.create') }}"
                 class="bg-[#613bf1] text-[#fff] flex items-center gap-4 px-4 py-2 rounded-[5px] text-[12px] sm:text-[14px]">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -32,7 +32,7 @@
                     </g>
                 </svg>
                 <span class="">Add new</span>
-            </a>
+            </a> --}}
         </div>
 
         @component('admin.components.alert')
@@ -74,7 +74,7 @@
                             </td>
                             <td class="text-left py-3 px-4 text-[12px] md:text-[14px] align-top">
                                 @if ($about->pdf_path)
-                                    <a href="{{ asset($about->pdf_path) }}" target="_blank" rel="noopener"
+                                    <a href="{{ route('public.media.show', ['path' => $about->pdf_path]) }}" target="_blank" rel="noopener"
                                         class="inline-flex items-center gap-2 rounded-md border border-[#613bf1]/20 bg-[#613bf1]/5 px-3 py-1.5 text-[12px] font-medium text-[#613bf1] hover:bg-[#613bf1]/10">
                                         <span>View PDF</span>
                                     </a>

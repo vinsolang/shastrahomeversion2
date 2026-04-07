@@ -99,17 +99,16 @@
                                         @endif
 
                                         {{-- Form --}}
-                                        <form method="POST" action="{{ route('contact.store') }}" aria-label="Contact us inquiry form" class="mt-4" novalidate>
+                                        <form method="POST" id="contactForm" action="{{ route('contact.telegram') }}" aria-label="Contact us inquiry form" class="mt-4" novalidate>
                                             @csrf
-
                                             <div class="grid gap-3 sm:grid-cols-2">
                                                 <label class="block">
-                                                    <span class="sr-only">{{ $firstNameField['label'] ?? '' }}</span>
+                                                    <span class="sr-only">Full Name</span>
                                                     <input
-                                                        type="{{ $firstNameField['type'] ?? 'text' }}"
+                                                        type="text"
                                                         name="first_name"
                                                         autocomplete="{{ $firstNameField['autocomplete'] ?? 'given-name' }}"
-                                                        placeholder="{{ $firstNameField['placeholder'] ?? '' }}"
+                                                        placeholder="Full Name"
                                                         value="{{ old('first_name') }}"
                                                         required
                                                         @class([
@@ -125,22 +124,22 @@
                                                 </label>
 
                                                 <label class="block">
-                                                    <span class="sr-only">{{ $lastNameField['label'] ?? '' }}</span>
+                                                    <span class="sr-only">Phone Number</span>
                                                     <input
-                                                        type="{{ $lastNameField['type'] ?? 'text' }}"
-                                                        name="last_name"
+                                                        type="text"
+                                                        name="phone_number"
                                                         autocomplete="{{ $lastNameField['autocomplete'] ?? 'family-name' }}"
-                                                        placeholder="{{ $lastNameField['placeholder'] ?? '' }}"
-                                                        value="{{ old('last_name') }}"
+                                                        placeholder="Phone Number"
+                                                        value="{{ old('phone_number') }}"
                                                         required
                                                         @class([
                                                             'contact-field',
-                                                            'contact-field--invalid' => $errors->has('last_name'),
+                                                            'contact-field--invalid' => $errors->has('phone_number'),
                                                         ])
-                                                        aria-invalid="{{ $errors->has('last_name') ? 'true' : 'false' }}"
+                                                        aria-invalid="{{ $errors->has('phone_number') ? 'true' : 'false' }}"
                                                     >
 
-                                                    @error('last_name')
+                                                    @error('phone_number')
                                                         <p class="contact-field-error mt-2">{{ $message }}</p>
                                                     @enderror
                                                 </label>
@@ -148,12 +147,12 @@
 
                                             <div class="mt-3 grid gap-3">
                                                 <label class="block">
-                                                    <span class="sr-only">{{ $emailField['label'] ?? '' }}</span>
+                                                    <span class="sr-only">Email Address</span>
                                                     <input
-                                                        type="{{ $emailField['type'] ?? 'email' }}"
+                                                        type="email"
                                                         name="email_address"
                                                         autocomplete="{{ $emailField['autocomplete'] ?? 'email' }}"
-                                                        placeholder="{{ $emailField['placeholder'] ?? '' }}"
+                                                        placeholder="Email Address"
                                                         value="{{ old('email_address') }}"
                                                         required
                                                         @class([
@@ -169,7 +168,7 @@
                                                 </label>
 
                                                 <label class="relative block">
-                                                    <span class="sr-only">{{ $projectTypeField['label'] ?? '' }}</span>
+                                                    <span class="sr-only">Project Type</span>
                                                     <select
                                                         name="project_type"
                                                         required
@@ -201,12 +200,12 @@
                                                 </label>
 
                                                 <label class="block">
-                                                    <span class="sr-only">{{ $messageField['label'] ?? '' }}</span>
+                                                    <span class="sr-only">Message</span>
                                                     <textarea
                                                         name="message"
                                                         rows="{{ $messageField['rows'] ?? 5 }}"
-                                                        placeholder="{{ $messageField['placeholder'] ?? '' }}"
-                                                        required
+                                                        placeholder="Message"
+                                                        
                                                         @class([
                                                             'contact-field contact-textarea',
                                                             'contact-field--invalid' => $errors->has('message'),
@@ -280,3 +279,37 @@
         ])
     </div>
 @endsection
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        let formData = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST",
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Accept': 'application/json'
+            },
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+
+            if (data.url) {
+                window.location.href = data.url; 
+                // OR open new tab:
+                // window.open(data.url, '_blank');
+            }
+
+        })
+        .catch(err => console.log(err));
+    });
+
+});
+</script>

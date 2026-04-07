@@ -48,10 +48,10 @@
 
     <div class="bg-white text-[#1f1f1f]">
         {{-- Hero --}}
-        <section class="overflow-hidden bg-white">
+        <section class=" bg-white">
             <div class="mx-auto max-w-[1904px]">
                 <div
-                    class="relative min-h-[30rem] overflow-hidden sm:min-h-[33rem] lg:h-[48rem] lg:min-h-[48rem] xl:h-[49.5rem] xl:min-h-[49.5rem]">
+                    class="relative min-h-[36rem] md:pb-0 pb-24 overflow-hidden sm:min-h-[28rem] md:min-h-[34rem] lg:h-[48rem] lg:min-h-[48rem] xl:h-[49.5rem] xl:min-h-[49.5rem]">
                     @if (filled($storyBackgroundVideo))
                         <div class="absolute inset-x-0 top-0 h-[14.5rem] overflow-hidden sm:h-[18rem] lg:inset-y-0 lg:left-[18.75rem] lg:right-0 lg:h-auto"
                             data-aos="fade-left" data-aos-duration="780">
@@ -70,7 +70,7 @@
                     @endif
 
                     {{-- Card --}}
-                    <div class="about-hero-card absolute left-3 top-[8.9rem] z-20 w-[calc(100%-1.5rem)] sm:left-6 sm:top-[11rem] sm:w-[min(34rem,calc(100%-3rem))] lg:left-[6.25rem] lg:top-[7.1rem] lg:w-[61.5rem] xl:left-[6.4rem] xl:top-[7.45rem] xl:w-[66rem]"
+                    <div class="about-hero-card absolute left-3 top-[11rem] z-20 w-[calc(100%-1.5rem)] sm:left-6 sm:top-[11rem] sm:w-[min(34rem,calc(100%-3rem))] lg:left-[6.25rem] lg:top-[7.1rem] lg:w-[61.5rem] xl:left-[6.4rem] xl:top-[7.45rem] xl:w-[66rem] pb-8 md:pb-0"
                         data-aos="fade-up" data-aos-duration="760">
                         <div
                             class="bg-[#ff8a00] px-4 py-4 shadow-[0_26px_40px_rgba(0,0,0,0.14)] sm:px-6 sm:py-5 lg:px-[3.35rem] lg:py-[2.65rem] xl:px-[3.55rem] xl:py-[2.8rem]">
@@ -92,7 +92,7 @@
                                 <div class="mt-5 sm:mt-6 lg:mt-9">
                                     @if ($downloadHref)
                                     {{-- {{ $downloadHref }} --}}
-                                        <a href="/abouts/pdfs" target="_blank" download="VGOkoYizAFJwjkzU5vEUpbF0nCCxn2GkpBNHDuCD.pdf"
+                                        <a href="{{ $downloadHref }}" target="_blank" download="Company_Profile.pdf"
                                             class="inline-flex min-h-[3rem] w-full items-center justify-center gap-3 bg-[#1f1f1f] px-4 text-[0.86rem] font-semibold text-[#ff9b0f] transition hover:bg-black sm:min-h-[3.35rem] sm:w-auto sm:px-6 sm:text-[0.92rem] lg:min-h-[4.1rem] lg:px-8 lg:text-[1rem]">
                                             @if (filled($downloadIcon))
                                                 <img src="{{ asset($downloadIcon) }}" alt=""

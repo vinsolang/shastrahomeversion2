@@ -21,7 +21,7 @@ final class HomeController extends Controller
         $banners = Banner::all();
 
         // --- Step 2: Fetch Projects / Portfolio from      DB ---
-        $products = Product::with('category')->latest()->take(6)->get();
+        $products = Product::with('category')->latest()->get();
         $categories = Category::all();
 
         // Fetch Why Us items from dashboard and map to the existing services-card format
@@ -60,7 +60,7 @@ final class HomeController extends Controller
         })->values()->all();
 
         $portfolioData = [
-            'heading'  => ['eyebrow' => '', 'title' => 'OUR PORTFOLIOS'],
+            'heading'  => ['eyebrow' => '', 'title' => ''],
             'tabs'     => $tabs,
             'projects' => $projects,
         ];
@@ -78,10 +78,10 @@ final class HomeController extends Controller
         ->all(),
 
     // These keys are required by your partial's <span> tags
-    'headline_prefix'   => 'Delivering thoughtful design & quality',
-    'headline_emphasis' => '',
-    'headline_suffix'   => 'construction for modern living.',
-    'accent'            => '',
+    'headline_prefix'   => 'Delivering thoughtful ',
+    'headline_emphasis' => 'design & quality',
+    'headline_suffix'   => 'construction for modern living',
+    'accent'            => '.',
 ];
 
 

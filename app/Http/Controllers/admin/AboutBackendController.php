@@ -39,7 +39,14 @@ class AboutBackendController extends Controller
 
     public function store(Request $request)
     {
+        // In store(), validate section_key separately:
+        $request->validate([
+            'section_key' => 'required|string|max:100|unique:abouts,section_key',
+        ]);
         $data = $this->syncUploads($request, $this->validatedData($request));
+        
+        // section_key must come from the form or be set explicitly
+        $data['section_key'] = $request->input('section_key'); // ← ADD THIS
 
         About::query()->create($data);
 
@@ -72,6 +79,7 @@ class AboutBackendController extends Controller
     private function validatedData(Request $request): array
     {
         return $request->validate([
+            // ← Remove section_key entirely — it must never be overwritten
             'title_en' => 'nullable|string|max:255',
             'title_km' => 'nullable|string|max:255',
             'title_ch' => 'nullable|string|max:255',
@@ -96,12 +104,9 @@ class AboutBackendController extends Controller
             'content5_km' => 'nullable|string',
             'content5_ch' => 'nullable|string',
 
-            //  File validation
             'pdf_file' => 'nullable|file|mimes:pdf|max:30720',
             'image_file' => 'nullable|image|max:5120',
-
         ], [
-            //  Custom messages
             'pdf_file.max' => 'The PDF file must not be larger than 30MB.',
             'pdf_file.mimes' => 'Only PDF files are allowed.',
             'image_file.max' => 'Image must not exceed 5MB.',

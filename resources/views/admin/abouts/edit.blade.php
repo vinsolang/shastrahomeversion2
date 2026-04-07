@@ -262,12 +262,15 @@
     </script>
 
     <script>
-document.getElementById('pdf_file').addEventListener('change', function () {
-    const file = this.files[0];
-    if (file && file.size > 30 * 1024 * 1024) {
-        alert('File is too large. Max size is 30MB.');
-        this.value = '';
-    }
-});
-</script>
+        const pdfInput = document.getElementById('pdf_file');
+if (pdfInput) {
+    pdfInput.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file && file.size > 30 * 1024 * 1024) {
+            alert('File is too large. Max size is 30MB.');
+            this.value = '';
+        }
+    });
+}
+    </script>
 @endsection

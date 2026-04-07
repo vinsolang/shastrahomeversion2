@@ -103,7 +103,7 @@ return [
         ],
         'contact' => $contact,
         'legal' => [
-            'copyright' => 'Copyright 2023 Shastra Home. All rights reserved.',
+            'copyright' => 'Copyright 2026 Shastra Home. All rights reserved.',
             'links' => [
                 ['label' => 'Privacy Policy', 'href' => null],
                 ['label' => 'Term of Service', 'href' => null],
